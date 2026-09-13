@@ -4,11 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { slideshowPhotos } from "@/data/slideshow-photos";
+import { useTranslation } from "@/i18n/dictionary";
 
 const SLIDES = slideshowPhotos.map((slide) => slide.image).slice(0, 15);
 const SLIDE_CAPTIONS = slideshowPhotos.map((slide) => slide.caption).slice(0, 15);
 
 export default function Hero() {
+  const { t } = useTranslation();
   const heroRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -178,29 +180,29 @@ export default function Hero() {
       >
         <div className="max-w-3xl rounded-[32px] bg-black/10 p-8 backdrop-blur-sm sm:p-10">
           <p className="mb-6 inline-flex rounded-full border border-white/10 px-4 py-1.5 text-sm uppercase tracking-[0.35em] text-white/70">
-            Fine Art Landscape &amp; Nightscape
+            {t("hero.badge")}
           </p>
           <h1 className="hero-title text-4xl font-semibold leading-tight tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
-            Tamás Csizmadia
+            {t("hero.name")}
             <span className="block text-[#D4AF37] mt-2 text-2xl font-medium tracking-wide sm:text-3xl">
-              Fineart Photos and Mountain Spirit
+              {t("hero.tagline")}
             </span>
           </h1>
           <p className="hero-copy mt-8 max-w-2xl text-lg leading-9 text-white/75 sm:text-xl">
-            A moody, modern portfolio for mountain light, alpine exploration, and extraordinary prints designed for collectors, exhibitions, and lovers of high-altitude atmosphere.
+            {t("hero.copy")}
           </p>
           <div className="hero-action mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href="#gallery"
               className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:border-[#D4AF37] hover:text-[#D4AF37]"
             >
-              Explore the Gallery
+              {t("hero.exploreGallery")}
             </a>
             <a
               href="#about"
               className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/10 px-6 py-3 text-sm font-medium text-white/90 transition hover:bg-white/10 hover:text-[#D4AF37]"
             >
-              About the Artist
+              {t("hero.aboutArtist")}
             </a>
           </div>
         </div>

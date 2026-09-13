@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { useCart } from "@/context/CartContext";
+import { useTranslation } from "@/i18n/dictionary";
 
 type CheckoutOverlayProps = {
   onClose: () => void;
 };
 
 export default function CheckoutOverlay({ onClose }: CheckoutOverlayProps) {
+  const { t } = useTranslation();
   const { items, total, removeItem, updateItemQuantity } = useCart();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -21,19 +23,19 @@ export default function CheckoutOverlay({ onClose }: CheckoutOverlayProps) {
           onClick={onClose}
           className="absolute right-4 top-4 rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm text-white transition hover:bg-white/10"
         >
-          Close
+          {t("checkout.close")}
         </button>
 
         <div className="p-8">
           <div className="mb-8">
-            <p className="text-xs uppercase tracking-[0.35em] text-white/50">Current order</p>
-            <h3 className="mt-3 text-3xl font-semibold text-white">Review your selection</h3>
+            <p className="text-xs uppercase tracking-[0.35em] text-white/50">{t("checkout.currentOrder")}</p>
+            <h3 className="mt-3 text-3xl font-semibold text-white">{t("checkout.reviewSelection")}</h3>
           </div>
 
           {isEmpty ? (
             <div className="rounded-[24px] border border-white/10 bg-[#0A0C10] p-8 text-center text-white/70">
-              <p className="text-lg font-medium text-white">Your cart is empty.</p>
-              <p className="mt-3 text-sm leading-7">Select a print and material to begin the premium acquisition experience.</p>
+              <p className="text-lg font-medium text-white">{t("checkout.emptyTitle")}</p>
+              <p className="mt-3 text-sm leading-7">{t("checkout.emptyBody")}</p>
             </div>
           ) : (
             <div className="space-y-6">
@@ -42,7 +44,7 @@ export default function CheckoutOverlay({ onClose }: CheckoutOverlayProps) {
                   <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
                     <div>
                       <p className="text-sm font-semibold text-white">{item.title}</p>
-                      <p className="text-sm text-white/60">{item.media} · {item.size}</p>
+                      <p className="text-sm text-white/60">{t(`acquisition.materials.${item.media}`)} · {item.size}</p>
                     </div>
                     <div className="flex items-center gap-3">
                       <button
@@ -71,7 +73,7 @@ export default function CheckoutOverlay({ onClose }: CheckoutOverlayProps) {
                       onClick={() => removeItem(item.id)}
                       className="text-sm text-white/50 transition hover:text-white"
                     >
-                      Remove
+                      {t("checkout.remove")}
                     </button>
                   </div>
                 </div>
@@ -81,7 +83,7 @@ export default function CheckoutOverlay({ onClose }: CheckoutOverlayProps) {
 
           <div className="mt-8 rounded-[24px] border border-white/10 bg-[#0A0C10] p-6">
             <div className="flex flex-col gap-4 text-sm text-white/70 sm:flex-row sm:items-center sm:justify-between">
-              <span>Order total</span>
+              <span>{t("checkout.orderTotal")}</span>
               <span className="text-lg font-semibold text-white">€{total}</span>
             </div>
             {error && (
@@ -108,10 +110,10 @@ export default function CheckoutOverlay({ onClose }: CheckoutOverlayProps) {
                     window.location.href = data.url;
                     return;
                   }
-                  setError(data.error || "Unable to create checkout. Please try again.");
+                  setError(data.error || t("checkout.genericError"));
                 } catch (err) {
                   console.error(err);
-                  setError("Stripe checkout is currently unavailable. Please try again later.");
+                  setError(t("checkout.stripeUnavailable"));
                 } finally {
                   setIsSubmitting(false);
                 }
@@ -122,7 +124,7 @@ export default function CheckoutOverlay({ onClose }: CheckoutOverlayProps) {
                   : "bg-[#D4AF37] text-[#0A0C10] hover:bg-[#c5992f]"
               }`}
             >
-              {isSubmitting ? "Preparing checkout…" : "Checkout with Stripe"}
+              {isSubmitting ? t("checkout.preparingCheckout") : t("checkout.checkoutButton")}
             </button>
           </div>
         </div>

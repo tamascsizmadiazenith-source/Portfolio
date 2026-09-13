@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
+import { useTranslation } from "@/i18n/dictionary";
 
 type AcquisitionOverlayProps = {
   photo: {
@@ -65,6 +66,7 @@ function getSizeRatio(option: string) {
 }
 
 export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverlayProps) {
+  const { t } = useTranslation();
   const [media, setMedia] = useState(mediaOptions[0]);
   const [size, setSize] = useState(paperLandscapeOptions[1].label);
   const { addItem } = useCart();
@@ -217,19 +219,19 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
           onClick={onClose}
           className="absolute right-4 top-4 rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm text-white transition hover:bg-white/10"
         >
-          Close
+          {t("acquisition.close")}
         </button>
 
         <div className="grid gap-6 p-8 lg:grid-cols-[1.2fr_0.95fr]">
           <div className="space-y-6">
             <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-white/50">Acquire this piece</p>
+              <p className="text-xs uppercase tracking-[0.35em] text-white/50">{t("acquisition.eyebrow")}</p>
               <h3 className="mt-3 text-3xl font-semibold text-white">{photo.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-white/70">Select your preferred material and size for a premium print order.</p>
+              <p className="mt-4 text-sm leading-7 text-white/70">{t("acquisition.subtitle")}</p>
             </div>
 
             <div className="space-y-4 rounded-[24px] border border-white/10 bg-[#0A0C10] p-6">
-              <div className="text-xs uppercase tracking-[0.35em] text-white/50">Material</div>
+              <div className="text-xs uppercase tracking-[0.35em] text-white/50">{t("acquisition.material")}</div>
               <div className="grid gap-3 sm:grid-cols-2 sm:max-w-[36rem]">
                 {mediaOptions.map((option) => (
                   <button
@@ -242,14 +244,14 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
                         : "border-white/10 bg-white/5 text-white/80"
                     }`}
                   >
-                    <span className="break-words text-center leading-tight">{option}</span>
+                    <span className="break-words text-center leading-tight">{t(`acquisition.materials.${option}`)}</span>
                   </button>
                 ))}
               </div>
             </div>
 
             <div className="space-y-4 rounded-[24px] border border-white/10 bg-[#0A0C10] p-6">
-              <div className="text-xs uppercase tracking-[0.35em] text-white/50">Size</div>
+              <div className="text-xs uppercase tracking-[0.35em] text-white/50">{t("acquisition.size")}</div>
               <div className="grid gap-3 sm:max-w-[36rem]">
                 {sizeOptions.map((option) => (
                   <button
@@ -269,18 +271,18 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
             </div>
 
             <div className="rounded-[24px] border border-white/10 bg-[#0A0C10] p-6">
-              <div className="text-xs uppercase tracking-[0.35em] text-white/50">Order summary</div>
+              <div className="text-xs uppercase tracking-[0.35em] text-white/50">{t("acquisition.orderSummary")}</div>
               <div className="mt-4 space-y-3 text-sm text-white/70">
                 <div className="flex justify-between border-b border-white/10 pb-3">
-                  <span>Material</span>
-                  <span>{media}</span>
+                  <span>{t("acquisition.material")}</span>
+                  <span>{t(`acquisition.materials.${media}`)}</span>
                 </div>
                 <div className="flex justify-between border-b border-white/10 pb-3">
-                  <span>Size</span>
+                  <span>{t("acquisition.size")}</span>
                   <span>{size}</span>
                 </div>
                 <div className="flex justify-between pt-3 text-base font-semibold text-white">
-                  <span>Total</span>
+                  <span>{t("acquisition.total")}</span>
                     <span>€{price}</span>
                 </div>
               </div>
@@ -288,7 +290,7 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
           </div>
 
           <div className="rounded-[32px] border border-white/10 bg-[#0F1218] p-8">
-            <div className="mb-6 text-xs uppercase tracking-[0.35em] text-white/50">Preview</div>
+            <div className="mb-6 text-xs uppercase tracking-[0.35em] text-white/50">{t("acquisition.preview")}</div>
             <div className="rounded-[28px] border border-white/10 bg-white/5 p-6">
               <div className="mx-auto max-w-[420px] rounded-[24px] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 p-1">
                 <div
@@ -331,7 +333,7 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
                 onClick={() => setFitMode(fitMode === "cover" ? "contain" : "cover")}
                 className="rounded-full border px-3 py-2 text-sm text-white/90"
               >
-                {fitMode === "cover" ? "Crop (cover)" : "Extend (fit)"}
+                {fitMode === "cover" ? t("acquisition.crop") : t("acquisition.extend")}
               </button>
               <button type="button" onClick={() => setRotation((r) => (r - 90) % 360)} className="rounded-full border px-3 py-2 text-sm text-white/90">
                 ↺
@@ -347,12 +349,12 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
                 }}
                 className="rounded-full border px-3 py-2 text-sm text-white/70"
               >
-                Reset
+                {t("acquisition.reset")}
               </button>
             </div>
             {ratioMismatch > 0.12 && (
               <div className="mt-3 rounded-md border border-amber-600/30 bg-amber-900/10 p-3 text-sm text-amber-300">
-                Warning: the selected print ratio differs substantially from the photo ratio — composition may be cropped or letterboxed.
+                {t("acquisition.ratioWarning")}
               </div>
             )}
             <button
@@ -360,7 +362,7 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
               onClick={handleAcquire}
               className="mt-8 flex w-full items-center justify-center rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#0A0C10] transition hover:bg-[#c5992f]"
             >
-              Add to Cart — €{price}
+              {t("acquisition.addToCart")} — €{price}
             </button>
           </div>
         </div>

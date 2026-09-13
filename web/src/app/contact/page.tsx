@@ -3,10 +3,13 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/context/LanguageContext";
 
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function ContactPage() {
+  const { locale } = useLanguage();
+  const hu = locale === "hu";
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterStatus, setNewsletterStatus] = useState<Status>("idle");
   const [newsletterError, setNewsletterError] = useState("");
@@ -17,6 +20,8 @@ export default function ContactPage() {
   const [message, setMessage] = useState("");
   const [contactStatus, setContactStatus] = useState<Status>("idle");
   const [contactError, setContactError] = useState("");
+
+  const somethingWrong = hu ? "Valami hiba történt." : "Something went wrong.";
 
   async function handleNewsletterSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -29,12 +34,12 @@ export default function ContactPage() {
         body: JSON.stringify({ email: newsletterEmail }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      if (!res.ok) throw new Error(data.error || somethingWrong);
       setNewsletterStatus("success");
       setNewsletterEmail("");
     } catch (err) {
       setNewsletterStatus("error");
-      setNewsletterError(err instanceof Error ? err.message : "Something went wrong.");
+      setNewsletterError(err instanceof Error ? err.message : somethingWrong);
     }
   }
 
@@ -49,7 +54,7 @@ export default function ContactPage() {
         body: JSON.stringify({ name, email, subject, message }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      if (!res.ok) throw new Error(data.error || somethingWrong);
       setContactStatus("success");
       setName("");
       setEmail("");
@@ -57,7 +62,7 @@ export default function ContactPage() {
       setMessage("");
     } catch (err) {
       setContactStatus("error");
-      setContactError(err instanceof Error ? err.message : "Something went wrong.");
+      setContactError(err instanceof Error ? err.message : somethingWrong);
     }
   }
 
@@ -69,17 +74,18 @@ export default function ContactPage() {
       <Header />
       <main className="py-24">
         <div className="mx-auto max-w-3xl px-6 sm:px-10 lg:px-16">
-          <p className="mb-4 text-sm uppercase tracking-[0.35em] text-white/60">Contact</p>
+          <p className="mb-4 text-sm uppercase tracking-[0.35em] text-white/60">{hu ? "Kapcsolat" : "Contact"}</p>
           <h1 className="text-4xl font-semibold tracking-[-0.03em] text-white sm:text-5xl">
-            Get in touch.
+            {hu ? "Vedd fel velem a kapcsolatot." : "Get in touch."}
           </h1>
 
           {/* Newsletter */}
           <section className="mt-14 rounded-[36px] border border-white/10 bg-[#11131A] px-6 py-8 shadow-[0_30px_70px_rgba(0,0,0,0.32)] sm:px-8 lg:px-10">
-            <div className="text-xs uppercase tracking-[0.35em] text-[#D4AF37]/80">Newsletter</div>
+            <div className="text-xs uppercase tracking-[0.35em] text-[#D4AF37]/80">{hu ? "Hírlevél" : "Newsletter"}</div>
             <p className="mt-4 text-lg leading-8 text-white/72">
-              Subscribe for news on workshops as well as updates on new print collections. All
-              email addresses will be kept private and never passed onto third parties.
+              {hu
+                ? "Iratkozz fel a workshopokról szóló hírekért, valamint az új nyomatgyűjtemények frissítéseiért. Minden e-mail címet bizalmasan kezelünk, harmadik félnek soha nem adjuk tovább."
+                : "Subscribe for news on workshops as well as updates on new print collections. All email addresses will be kept private and never passed onto third parties."}
             </p>
             <form onSubmit={handleNewsletterSubmit} className="mt-6 flex flex-col gap-3 sm:flex-row">
               <input
@@ -87,7 +93,7 @@ export default function ContactPage() {
                 required
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
-                placeholder="Your email address"
+                placeholder={hu ? "E-mail címed" : "Your email address"}
                 className={`${inputClasses} sm:flex-1`}
               />
               <button
@@ -95,11 +101,11 @@ export default function ContactPage() {
                 disabled={newsletterStatus === "loading"}
                 className="rounded-2xl bg-[#D4AF37] px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#0A0C10] transition hover:bg-[#e2c15a] disabled:opacity-60"
               >
-                {newsletterStatus === "loading" ? "Sending…" : "Subscribe"}
+                {newsletterStatus === "loading" ? (hu ? "Küldés…" : "Sending…") : (hu ? "Feliratkozás" : "Subscribe")}
               </button>
             </form>
             {newsletterStatus === "success" && (
-              <p className="mt-3 text-sm text-[#D4AF37]">Thanks for subscribing!</p>
+              <p className="mt-3 text-sm text-[#D4AF37]">{hu ? "Köszönjük a feliratkozást!" : "Thanks for subscribing!"}</p>
             )}
             {newsletterStatus === "error" && (
               <p className="mt-3 text-sm text-red-400">{newsletterError}</p>
@@ -108,14 +114,27 @@ export default function ContactPage() {
 
           {/* Contact form */}
           <section className="mt-10 rounded-[36px] border border-white/10 bg-[#11131A] px-6 py-8 shadow-[0_30px_70px_rgba(0,0,0,0.32)] sm:px-8 lg:px-10">
-            <div className="text-xs uppercase tracking-[0.35em] text-[#D4AF37]/80">Direct contact</div>
+            <div className="text-xs uppercase tracking-[0.35em] text-[#D4AF37]/80">{hu ? "Közvetlen kapcsolat" : "Direct contact"}</div>
             <p className="mt-4 text-lg leading-8 text-white/72">
-              For information on workshops, prints, licensing or anything else, complete the form
-              below or just write me directly to{" "}
-              <a href="mailto:tamas@csizmadia.net" className="text-[#D4AF37] hover:underline">
-                tamas@csizmadia.net
-              </a>{" "}
-              and I&apos;ll get back to you as soon as I can.
+              {hu ? (
+                <>
+                  Workshopokkal, nyomatokkal, licenszeléssel vagy bármi mással kapcsolatban töltsd
+                  ki az alábbi űrlapot, vagy írj közvetlenül a{" "}
+                  <a href="mailto:tamas@csizmadia.net" className="text-[#D4AF37] hover:underline">
+                    tamas@csizmadia.net
+                  </a>{" "}
+                  címre, és amint tudok, válaszolok.
+                </>
+              ) : (
+                <>
+                  For information on workshops, prints, licensing or anything else, complete the form
+                  below or just write me directly to{" "}
+                  <a href="mailto:tamas@csizmadia.net" className="text-[#D4AF37] hover:underline">
+                    tamas@csizmadia.net
+                  </a>{" "}
+                  and I&apos;ll get back to you as soon as I can.
+                </>
+              )}
             </p>
             <form onSubmit={handleContactSubmit} className="mt-6 space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
@@ -124,7 +143,7 @@ export default function ContactPage() {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Name"
+                  placeholder={hu ? "Név" : "Name"}
                   className={inputClasses}
                 />
                 <input
@@ -132,7 +151,7 @@ export default function ContactPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="E-mail address"
+                  placeholder={hu ? "E-mail cím" : "E-mail address"}
                   className={inputClasses}
                 />
               </div>
@@ -141,14 +160,14 @@ export default function ContactPage() {
                 required
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                placeholder="Subject"
+                placeholder={hu ? "Tárgy" : "Subject"}
                 className={inputClasses}
               />
               <textarea
                 required
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Message"
+                placeholder={hu ? "Üzenet" : "Message"}
                 rows={6}
                 className={inputClasses}
               />
@@ -157,11 +176,11 @@ export default function ContactPage() {
                 disabled={contactStatus === "loading"}
                 className="rounded-2xl bg-[#D4AF37] px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#0A0C10] transition hover:bg-[#e2c15a] disabled:opacity-60"
               >
-                {contactStatus === "loading" ? "Sending…" : "Submit"}
+                {contactStatus === "loading" ? (hu ? "Küldés…" : "Sending…") : (hu ? "Küldés" : "Submit")}
               </button>
             </form>
             {contactStatus === "success" && (
-              <p className="mt-3 text-sm text-[#D4AF37]">Thanks — your message has been sent!</p>
+              <p className="mt-3 text-sm text-[#D4AF37]">{hu ? "Köszönjük — az üzeneted elküldve!" : "Thanks — your message has been sent!"}</p>
             )}
             {contactStatus === "error" && (
               <p className="mt-3 text-sm text-red-400">{contactError}</p>

@@ -8,6 +8,7 @@ import VirtualWall from "@/components/virtual-wall/VirtualWall";
 import { photoItems, type PhotoItem } from "@/data/gallery-photos";
 
 import Image from "next/image";
+import { useTranslation } from "@/i18n/dictionary";
 
 // Category filter chips are derived from whatever folders exist under public/photos/Gallery.
 const categoryLabelByValue = new Map<string, string>();
@@ -17,10 +18,7 @@ for (const item of photoItems) {
   }
 }
 
-const categories = [
-  { value: "all", label: "My Favorites" },
-  ...Array.from(categoryLabelByValue, ([value, label]) => ({ value, label })),
-];
+const categorySlugs = Array.from(categoryLabelByValue.keys());
 
 const featuredCollectionDefs = [
   {
@@ -67,6 +65,11 @@ const featuredCollections = featuredCollectionDefs.flatMap((def) => {
 });
 
 export default function Gallery() {
+  const { t } = useTranslation();
+  const categories = [
+    { value: "all", label: t("gallery.myFavorites") },
+    ...categorySlugs.map((value) => ({ value, label: t(`categories.${value}`) })),
+  ];
   const [activePhoto, setActivePhoto] = React.useState<PhotoItem | null>(null);
   const [wallOpen, setWallOpen] = React.useState(false);
   const [acquireOpen, setAcquireOpen] = React.useState(false);
@@ -149,14 +152,14 @@ export default function Gallery() {
         <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="mb-3 text-sm uppercase tracking-[0.35em] text-white/60">
-              Gallery
+              {t("gallery.eyebrow")}
             </p>
             <h2 className="text-4xl font-semibold tracking-[-0.03em] text-white sm:text-5xl">
-              Select a series of mountain moods.
+              {t("gallery.heading")}
             </h2>
           </div>
           <p className="max-w-xl text-base leading-8 text-white/70 sm:text-right">
-            Explore curated themes with immersive previews and prepare to bring these scenes into your space through premium prints.
+            {t("gallery.intro")}
           </p>
         </div>
 
@@ -164,14 +167,14 @@ export default function Gallery() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.35em] text-white/50">
-                Featured collections
+                {t("gallery.featuredEyebrow")}
               </p>
               <h3 className="mt-3 text-3xl font-semibold text-white">
-                Curated pillars of the portfolio.
+                {t("gallery.featuredHeading")}
               </h3>
             </div>
             <p className="max-w-xl text-sm leading-7 text-white/70 sm:text-right">
-              Swipe through the strongest themes, then explore the gallery filtered to match.
+              {t("gallery.featuredIntro")}
             </p>
           </div>
 
@@ -200,15 +203,15 @@ export default function Gallery() {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/80" />
                     <div className="absolute inset-x-0 bottom-0 py-4 px-5 backdrop-blur-sm">
                       <div className="text-xs uppercase tracking-[0.35em] text-white/80">
-                        {categoryLabelByValue.get(collection.category) ?? collection.category}
+                        {categoryLabelByValue.get(collection.category) ? t(`categories.${collection.category}`) : collection.category}
                       </div>
-                      <h3 className="mt-2 text-2xl font-semibold text-white">{collection.title}</h3>
+                      <h3 className="mt-2 text-2xl font-semibold text-white">{t(`gallery.featured.${collection.category}.title`)}</h3>
                     </div>
                   </div>
                   <div className="space-y-4 p-8">
-                    <p className="text-sm leading-7 text-white/70">{collection.description}</p>
+                    <p className="text-sm leading-7 text-white/70">{t(`gallery.featured.${collection.category}.description`)}</p>
                     <div className="inline-flex items-center gap-2 text-sm font-semibold text-[#D4AF37]">
-                      <span>Explore collection</span>
+                      <span>{t("gallery.exploreCollection")}</span>
                       <span aria-hidden="true">→</span>
                     </div>
                   </div>
@@ -271,19 +274,19 @@ export default function Gallery() {
                   <div className="rounded-3xl bg-black/70 px-4 py-3 text-sm text-white/90 backdrop-blur-sm">
                     <div className="font-semibold">{photo.title}</div>
                     <div className="mt-1 text-xs uppercase tracking-[0.35em] text-white/70">
-                      {photo.location}
+                      {t(`categories.${photo.category}`)}
                     </div>
                   </div>
                 </div>
               </div>
               <div className="space-y-4 p-6">
                 <div className="flex items-center justify-between text-sm uppercase tracking-[0.35em] text-white/50">
-                  <span>{photo.categoryLabel}</span>
-                  <span>{photo.location}</span>
+                  <span>{t(`categories.${photo.category}`)}</span>
+                  <span>{t(`categories.${photo.category}`)}</span>
                 </div>
                 <div>
                   <h3 className="text-2xl font-semibold text-white">{photo.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/70">{photo.description}</p>
+                  <p className="mt-3 text-sm leading-7 text-white/70">{t(`categories.${photo.category}`)} {t("gallery.collectionWord")}</p>
                 </div>
                 <div className="flex flex-wrap gap-3 pt-2">
                   <button
@@ -291,14 +294,14 @@ export default function Gallery() {
                     onClick={() => openWall(photo)}
                     className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white transition hover:border-[#D4AF37] hover:text-[#D4AF37]"
                   >
-                    View on wall
+                    {t("gallery.viewOnWall")}
                   </button>
                   <button
                     type="button"
                     onClick={() => openAcquire(photo)}
                     className="rounded-full border border-white/15 bg-[#D4AF37]/5 px-4 py-2 text-sm font-medium text-[#D4AF37] transition hover:bg-[#D4AF37]/10"
                   >
-                    Acquire this piece
+                    {t("gallery.acquirePiece")}
                   </button>
                   <button
                     type="button"
@@ -309,7 +312,7 @@ export default function Gallery() {
                     }}
                     className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white transition hover:border-[#D4AF37] hover:text-[#D4AF37]"
                   >
-                    View full size
+                    {t("gallery.viewFullSize")}
                   </button>
                 </div>
               </div>
@@ -335,13 +338,13 @@ export default function Gallery() {
             style={{ top: "max(1rem, env(safe-area-inset-top))", right: "max(1rem, env(safe-area-inset-right))" }}
             className="fixed z-[70] rounded-full border border-white/15 bg-[#11131A] px-4 py-2.5 text-sm font-medium text-white shadow-lg shadow-black/40 transition hover:bg-white/10"
           >
-            Close
+            {t("gallery.close")}
           </button>
 
           <div className="relative mt-14 w-full max-w-[95rem] overflow-hidden rounded-[32px] border border-white/10 bg-[#11131A] p-4 shadow-[0_40px_120px_rgba(0,0,0,0.8)] sm:mt-0 sm:p-6">
             <div className="mb-6">
               <h3 className="text-2xl font-semibold text-white sm:text-3xl">{lightboxPhoto.title}</h3>
-              <p className="mt-2 text-sm text-white/70">{lightboxPhoto.location}</p>
+              <p className="mt-2 text-sm text-white/70">{t(`categories.${lightboxPhoto.category}`)}</p>
             </div>
 
             <div className="relative mx-auto min-h-[60vh] max-h-[calc(100vh-10rem)] max-w-[1500px] overflow-hidden rounded-[28px] bg-slate-950 shadow-inner shadow-black/50 sm:min-h-[930px] sm:max-h-[calc(100vh-6rem)]">
@@ -357,16 +360,16 @@ export default function Gallery() {
                         <div className="h-3 w-56 overflow-hidden rounded-full bg-white/10">
                           <div className="h-full w-3/4 animate-pulse rounded-full bg-white/40" />
                         </div>
-                        <div className="text-sm">Loading preview…</div>
+                        <div className="text-sm">{t("gallery.loadingPreview")}</div>
                       </div>
                     </div>
                   )}
 
                   {lightboxError ? (
                     <div className="flex min-h-[220px] w-full items-center justify-center rounded-[24px] border border-dashed border-white/20 bg-[#0B0D13] px-6 py-8 text-center text-sm text-white/70">
-                      Unable to load preview.
+                      {t("gallery.unableToLoad")}
                       <br />
-                      Please close and try again.
+                      {t("gallery.tryAgain")}
                     </div>
                   ) : (
                     <Image
