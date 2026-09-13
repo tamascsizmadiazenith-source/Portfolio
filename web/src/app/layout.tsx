@@ -13,9 +13,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_TITLE = "Tamás Csizmadia | Landscape Art";
+const SITE_DESCRIPTION =
+  "Fine art landscape and nightscape photography portfolio showcasing mountain spirit and premium prints.";
+
 export const metadata: Metadata = {
-  title: "Tamás Csizmadia | Landscape Art",
-  description: "Fine art landscape and nightscape photography portfolio showcasing mountain spirit and premium prints.",
+  title: SITE_TITLE,
+  description: SITE_DESCRIPTION,
+  icons: {
+    icon: "/logo1_1.png",
+    shortcut: "/logo1_1.png",
+    apple: "/logo1_1.png",
+  },
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [{ url: "/logo1_1.png", width: 486, height: 486 }],
+  },
+  twitter: {
+    card: "summary",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: ["/logo1_1.png"],
+  },
 };
 
 export default function RootLayout({
