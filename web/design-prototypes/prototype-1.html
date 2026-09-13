@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prototype 1 – Cinematic Gallery</title>
+  <style>
+    :root { color-scheme: dark; background:#04050a; color:#f8fafc; font-family:Inter,system-ui,-apple-system, BlinkMacSystemFont,Segoe UI, sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; }
+    a { color:inherit; text-decoration:none; }
+    .page { display:grid; gap:64px; padding:0; }
+    header { position:sticky; top:0; z-index:10; backdrop-filter:blur(22px); background:rgba(4,5,10,.8); border-bottom:1px solid rgba(255,255,255,.08); }
+    .nav { max-width:1200px; margin:0 auto; padding:20px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:16px; }
+    .mark { width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,#d4af37,#ffd166); display:flex; align-items:center; justify-content:center; font-weight:900; color:#081517; }
+    .menu { display:flex; gap:22px; align-items:center; font-size:.9rem; letter-spacing:.18em; text-transform:uppercase; color:#cbd5e1; }
+    .menu a:hover { color:#d4af37; }
+    .hero { min-height:86vh; display:grid; align-items:end; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800"><rect width="800" height="800" fill="black" fill-opacity="0.18"/></svg>') center/cover no-repeat; mix-blend-mode:screen; }
+    .hero-grid { position:relative; max-width:1200px; margin:0 auto; padding:48px 32px 72px; display:grid; grid-template-columns:1.6fr 1fr; gap:54px; }
+    .hero-copy { align-self:end; }
+    .eyebrow { font-size:.82rem; letter-spacing:.26em; text-transform:uppercase; color:#94a3b8; margin-bottom:18px; }
+    .headline { font-size:clamp(3rem, 5vw, 5.2rem); line-height:1; margin:0; max-width:12ch; letter-spacing:-.06em; }
+    .lead { margin:24px 0; max-width:44ch; color:#cbd5e1; line-height:1.9; font-size:1.05rem; }
+    .cta { display:inline-flex; align-items:center; gap:12px; background:#d4af37; color:#081517; font-weight:700; padding:16px 26px; border-radius:999px; box-shadow:0 24px 60px rgba(212,175,55,.18); }
+    .hero-meta { position:absolute; left:32px; bottom:32px; display:grid; gap:14px; }
+    .meta-pill { display:inline-flex; align-items:center; gap:10px; background:rgba(15,23,42,.9); border:1px solid rgba(255,255,255,.08); border-radius:999px; padding:12px 18px; color:#d1d5db; font-size:.95rem; }
+    .gallery { max-width:1200px; margin:0 auto; padding:0 32px 64px; display:grid; gap:24px; }
+    .section-head { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .section-head h2 { margin:0; font-size:2rem; letter-spacing:-.03em; }
+    .section-head p { margin:0; color:#94a3b8; max-width:36rem; }
+    .grid { display:grid; gap:18px; grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .card { position:relative; min-height:320px; border-radius:28px; overflow:hidden; background:#0f172a; border:1px solid rgba(255,255,255,.08); }
+    .card::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(14,23,43,.08),rgba(3,7,15,.9)); }
+    .card-top { position:absolute; inset:0; background:radial-gradient(circle at 30% 20%, rgba(212,175,55,.22), transparent 32%), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="600" height="400" fill="%23081417"/></svg>') center/cover no-repeat; }
+    .card-body { position:relative; z-index:1; display:flex; flex-direction:column; justify-content:flex-end; height:100%; padding:26px; }
+    .card h3 { margin:0 0 10px; font-size:1.5rem; }
+    .card span { letter-spacing:.18em; text-transform:uppercase; font-size:.75rem; color:#94a3b8; }
+    .about { background:#05070d; padding:64px 32px 84px; }
+    .about-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 0.75fr; gap:42px; }
+    .about h2 { font-size:2rem; margin-bottom:22px; }
+    .about p { color:#cbd5e1; line-height:1.9; }
+    .footer { padding:32px; text-align:center; color:#64748b; font-size:.95rem; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav">
+        <div class="brand"><div class="mark">T</div><div><strong>Tamás Csizmadia</strong><div style="font-size:.8rem;color:#94a3b8;">Fineart Photography</div></div></div>
+        <nav class="menu"><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Fine Art Landscapes</div>
+            <h1 class="headline">Mountain moods in cinematic light.</h1>
+            <p class="lead">A refined portfolio of alpine and nightscape photography designed to invite collectors into serene, atmospheric landscapes.</p>
+            <a class="cta" href="#gallery">Explore the portfolio</a>
+          </div>
+          <div class="hero-meta">
+            <div class="meta-pill">Nightscape series</div>
+            <div class="meta-pill">Limited edition prints</div>
+            <div class="meta-pill">Editorial-worthy framing</div>
+          </div>
+        </div>
+      </section>
+      <section id="gallery" class="gallery">
+        <div class="section-head">
+          <div>
+            <h2>Selected works</h2>
+            <p>Large-format imagery arranged as premium gallery cards with elegant editorial hierarchy.</p>
+          </div>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="card-top"></div><div class="card-body"><span>NIGHTSCAPE</span><h3>Nightscape 3</h3></div></article>
+          <article class="card"><div class="card-top"></div><div class="card-body"><span>MOUNTAIN SPIRIT</span><h3>Golden Ridge</h3></div></article>
+          <article class="card"><div class="card-top"></div><div class="card-body"><span>SWISS ALPS</span><h3>Snow and Light</h3></div></article>
+          <article class="card"><div class="card-top"></div><div class="card-body"><span>LA PALMA</span><h3>Volcanic Coast</h3></div></article>
+        </div>
+      </section>
+      <section id="about" class="about">
+        <div class="about-grid">
+          <div>
+            <h2>A visual path through nature.</h2>
+            <p>Every composition is built around quiet mountain moments and nocturnal atmospheres. The page carries the same temperament: powerful, restrained, and deeply tactile.</p>
+          </div>
+          <div>
+            <p>Design notes: use charcoal fields, warm gold accents, and large-format image cards in the final site. Keep interactions subtle and let the photography carry the emotion.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">Prototype 1 — Cinematic Gallery. Choose the direction that feels most aligned with the portfolio’s character.</footer>
+  </div>
+</body>
+</html>

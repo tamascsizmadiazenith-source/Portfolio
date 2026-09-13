@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Design Prototypes | Tamás Csizmadia</title>
+  <style>
+    body { margin:0; font-family:Inter,system-ui,-apple-system, BlinkMacSystemFont,Segoe UI, sans-serif; background:#0A0C10; color:#f8fafc; }
+    .page { min-height:100vh; padding:56px 24px; display:grid; place-items:center; }
+    .card-grid { display:grid; gap:18px; max-width:960px; width:100%; }
+    .card { border:1px solid rgba(255,255,255,.1); border-radius:24px; background:rgba(15,23,42,.8); padding:28px; text-decoration:none; color:inherit; transition:transform .2s ease, border-color .2s ease; }
+    .card:hover { transform:translateY(-4px); border-color:rgba(212,175,55,.4); }
+    .card h2 { margin:0 0 10px; font-size:1.5rem; letter-spacing:.02em; }
+    .card p { margin:0; color:#cbd5e1; line-height:1.7; }
+    .header { text-align:center; max-width:700px; margin-bottom:40px; }
+    .header h1 { font-size:clamp(2rem, 4vw, 3.4rem); margin:0 0 16px; letter-spacing:-.03em; }
+    .header p { margin:0; color:#a0aec0; }
+    a.logo { display:inline-flex; gap:10px; align-items:center; margin-bottom:32px; text-decoration:none; color:#f8fafc; }
+    .logo .mark { width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,#d4af37,#ffd166); display:flex; align-items:center; justify-content:center; font-weight:900; color:#0a0c10; font-size:1rem; }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div>
+      <a class="logo" href="#">
+        <span class="mark">T</span>
+        <span>Tamás Csizmadia — web design prototypes</span>
+      </a>
+      <section class="header">
+        <h1>Choose the next web design direction</h1>
+        <p>Four coherent, luxury-inspired homepage prototypes with the same visual voice, each tuned to a different art direction.</p>
+      </section>
+      <div class="card-grid">
+        <a class="card" href="prototype-1.html"> 
+          <h2>Prototype 1 – Cinematic Gallery</h2>
+          <p>Bold hero imagery, dramatic overlays, and immersive gallery rows for a strong luxury presentation.</p>
+        </a>
+        <a class="card" href="prototype-2.html">
+          <h2>Prototype 2 – Editorial Portfolio</h2>
+          <p>Magazine-style layout with refined typography, split hero, and elegant image storytelling.</p>
+        </a>
+        <a class="card" href="prototype-3.html">
+          <h2>Prototype 3 – Minimalist Focus</h2>
+          <p>Clean, modern interface with a balanced catalog layout and understated accents for premium browsing.</p>
+        </a>
+        <a class="card" href="prototype-4.html">
+          <h2>Prototype 4 – Luxe Monochrome</h2>
+          <p>Rich black styling, metallic highlights, and an editorial structure that feels exclusive and refined.</p>
+        </a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

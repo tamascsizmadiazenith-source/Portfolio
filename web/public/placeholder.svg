@@ -1,0 +1,13 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#0A0C10"/>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#132030"/>
+      <stop offset="100%" stop-color="#1F2430"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1200" height="800" fill="url(#grad)" />
+  <path d="M180 720 C 320 520 420 540 540 420 C 660 300 740 420 860 320 C 980 220 1080 340 1080 340 L1080 800 L0 800 Z" fill="#16243A"/>
+  <path d="M220 760 C 340 560 460 580 580 460 C 700 340 780 460 900 360 C 1020 260 1080 320 1080 320" stroke="#D4AF37" stroke-width="8" stroke-linecap="round" fill="none" opacity="0.75"/>
+  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="#F8F9FA" font-family="Inter, sans-serif" font-size="48" font-weight="700">Photo Placeholder</text>
+</svg>

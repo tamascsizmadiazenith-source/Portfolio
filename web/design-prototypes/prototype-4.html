@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prototype 4 – Luxe Monochrome</title>
+  <style>
+    :root { color-scheme: dark; background:#02060d; color:#eef2ff; font-family:Inter,system-ui,-apple-system, BlinkMacSystemFont,Segoe UI, sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; }
+    a { color:inherit; text-decoration:none; }
+    .site { max-width:1200px; margin:0 auto; padding:36px 28px; display:grid; gap:40px; }
+    .topbar { display:flex; justify-content:space-between; gap:24px; align-items:center; }
+    .logo { display:flex; align-items:center; gap:14px; }
+    .logo-mark { width:46px; height:46px; border-radius:50%; background:#d4af37; display:flex; align-items:center; justify-content:center; font-size:1rem; font-weight:800; color:#081517; }
+    .links { display:flex; gap:28px; font-size:.84rem; letter-spacing:.24em; text-transform:uppercase; color:#a5b4fc; }
+    .links a:hover { color:#d4af37; }
+    .hero { display:grid; gap:32px; grid-template-columns:1.2fr .75fr; align-items:start; }
+    .hero-copy { padding:32px 0 0; }
+    .label { text-transform:uppercase; letter-spacing:.28em; font-size:.75rem; color:#94a3b8; margin-bottom:16px; }
+    .hero-title { margin:0; font-size:clamp(3rem, 5vw, 5.2rem); line-height:1; letter-spacing:-.05em; max-width:11ch; }
+    .hero-text { margin:24px 0; color:#cbd5e1; line-height:1.8; max-width:42rem; }
+    .hero-actions { display:flex; gap:16px; flex-wrap:wrap; }
+    .button { display:inline-flex; align-items:center; justify-content:center; padding:16px 26px; border-radius:999px; font-weight:700; letter-spacing:.04em; }
+    .button.primary { background:#d4af37; color:#081517; }
+    .button.secondary { border:1px solid rgba(255,255,255,.1); color:#e2e8f0; }
+    .hero-panel { border:1px solid rgba(255,255,255,.08); border-radius:32px; background:rgba(255,255,255,.03); padding:32px; display:grid; gap:24px; }
+    .hero-panel h3 { margin:0; font-size:1.25rem; }
+    .hero-panel p { margin:0; color:#cbd5e1; line-height:1.9; }
+    .gallery { display:grid; gap:24px; grid-template-columns:1fr 1fr; }
+    .gallery-card { position:relative; min-height:300px; border-radius:28px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:#0b1220; }
+    .gallery-card::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,rgba(2,6,13,.1),rgba(0,0,0,.65)); }
+    .gallery-card .info { position:absolute; bottom:24px; left:24px; z-index:1; color:#f8fafc; }
+    .gallery-card h3 { margin:0 0 10px; font-size:1.75rem; }
+    .gallery-card p { margin:0; max-width:24rem; color:#cbd5e1; line-height:1.8; }
+    .stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+    .stat { border:1px solid rgba(255,255,255,.08); border-radius:24px; padding:26px; background:rgba(255,255,255,.02); }
+    .stat strong { display:block; font-size:2rem; color:#d4af37; }
+    .stat span { color:#cbd5e1; display:block; margin-top:10px; }
+    .about { display:grid; gap:20px; grid-template-columns:1.4fr .8fr; }
+    .about-text { border-radius:28px; border:1px solid rgba(255,255,255,.08); padding:34px; background:rgba(255,255,255,.02); }
+    .about-text h2 { margin-top:0; }
+    .about-text p { color:#cbd5e1; line-height:1.9; }
+    .about-list { display:grid; gap:16px; }
+    .about-list article { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:24px; padding:24px; }
+    .about-list h3 { margin:0 0 10px; }
+    .about-list p { margin:0; color:#cbd5e1; line-height:1.8; }
+    footer { padding:32px 0 12px; color:#94a3b8; text-align:center; }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <div class="topbar">
+      <div class="logo"><div class="logo-mark">T</div><div><strong>Tamás Csizmadia</strong><div style="font-size:.84rem;color:#94a3b8;">Fineart Photography</div></div></div>
+      <nav class="links"><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    </div>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="label">Luxe Monochrome</div>
+        <h1 class="hero-title">A premium portfolio designed as a quiet luxury experience.</h1>
+        <p class="hero-text">Clean navigation, elegant spacing, and rich typography create a fine-art presentation without visual noise.</p>
+        <div class="hero-actions"><a class="button primary" href="#gallery">View gallery</a><a class="button secondary" href="#about">Learn more</a></div>
+      </div>
+      <div class="hero-panel">
+        <h3>Designed for collectors</h3>
+        <p>This prototype pairs striking visual hierarchy with a restrained black-and-gold palette to feel both contemporary and timeless.</p>
+        <div class="stats">
+          <div class="stat"><strong>1000px</strong><span>Longer-side preview</span></div>
+          <div class="stat"><strong>4</strong><span>Main categories</span></div>
+          <div class="stat"><strong>53</strong><span>Indexed works</span></div>
+        </div>
+      </div>
+    </section>
+    <section id="gallery" class="gallery">
+      <article class="gallery-card"><div class="info"><h3>Swiss Alps 1</h3><p>Bright mountain peaks set against deep shadows for a dramatic gallery presence.</p></div></article>
+      <article class="gallery-card"><div class="info"><h3>Nightscape 3</h3><p>A refined composition that feels cinematic and quiet at the same time.</p></div></article>
+      <article class="gallery-card"><div class="info"><h3>Mountain Spirit 5</h3><p>Modern portfolio styling with an emphasis on clarity and premium spacing.</p></div></article>
+      <article class="gallery-card"><div class="info"><h3>Birdeye View</h3><p>Architectural landscapes presented as collectible photographic studies.</p></div></article>
+    </section>
+    <section id="about" class="about">
+      <div class="about-text"><h2>Quiet luxury, visual strength</h2><p>Use generous negative space, subtle gradients, and restrained accents to create a website that feels both luxurious and approachable.</p></div>
+      <div class="about-list">
+        <article><h3>Focus</h3><p>Keep the interface minimal and let the photography feel elevated.</p></article>
+        <article><h3>Tone</h3><p>Rich black surfaces, metallic highlights, and delicate serif typographic details.</p></article>
+      </div>
+    </section>
+    <footer>Prototype 4 — Luxe Monochrome. Strong, modern, and editorial.</footer>
+  </div>
+</body>
+</html>

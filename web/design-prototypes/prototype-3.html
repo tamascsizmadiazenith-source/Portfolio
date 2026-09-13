@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prototype 3 – Minimalist Focus</title>
+  <style>
+    :root { color-scheme: dark; background:#05070d; color:#eff2ff; font-family:Inter,system-ui,-apple-system, BlinkMacSystemFont,Segoe UI, sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; }
+    a { color:inherit; text-decoration:none; }
+    .page { display:grid; gap:64px; padding:32px; max-width:1180px; margin:0 auto; }
+    header { display:flex; justify-content:space-between; align-items:center; padding-bottom:18px; border-bottom:1px solid rgba(255,255,255,.08); }
+    .brand { display:flex; align-items:center; gap:14px; }
+    .brand-dot { width:16px; height:16px; border-radius:50%; background:#d4af37; }
+    .brand span { font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:.85rem; }
+    .nav { display:flex; gap:18px; color:#a1a8b3; font-size:.82rem; text-transform:uppercase; letter-spacing:.24em; }
+    .hero { display:grid; gap:24px; padding:64px 0; }
+    .hero-top { display:flex; justify-content:space-between; align-items:flex-end; gap:18px; }
+    .eyebrow { color:#94a3b8; font-size:.82rem; letter-spacing:.24em; text-transform:uppercase; }
+    .headline { font-size:clamp(2.8rem,5vw,4.6rem); line-height:1.02; margin:0; max-width:12ch; }
+    .hero-copy { max-width:46rem; color:#cbd5e1; line-height:1.9; }
+    .metrics { display:grid; gap:16px; grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .metric { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); padding:24px; border-radius:22px; }
+    .metric strong { display:block; font-size:1.9rem; color:#d4af37; margin-bottom:8px; }
+    .gallery { display:grid; gap:22px; grid-template-columns:repeat(3,minmax(0,1fr)); }
+    .gallery-card { background:rgba(10,14,22,.95); border:1px solid rgba(255,255,255,.08); border-radius:26px; overflow:hidden; min-height:280px; display:grid; }
+    .gallery-card .preview { flex:1; background:linear-gradient(180deg,rgba(212,175,55,.1),transparent), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect width="400" height="300" fill="%23101118"/></svg>') center/cover no-repeat; }
+    .gallery-card .info { padding:22px; display:grid; gap:10px; }
+    .gallery-card .info span { font-size:.75rem; text-transform:uppercase; letter-spacing:.22em; color:#94a3b8; }
+    .gallery-card .info h3 { margin:0; font-size:1.4rem; }
+    .gallery-card .info p { margin:0; color:#cbd5e1; font-size:.95rem; line-height:1.8; }
+    .about { display:grid; gap:20px; grid-template-columns:2fr 1fr; padding-bottom:24px; }
+    .about section { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:26px; padding:32px; }
+    .about strong { display:block; font-size:1.1rem; margin-bottom:14px; color:#f8fafc; }
+    .about p { margin:0; color:#cbd5e1; line-height:1.9; }
+    footer { padding-top:30px; color:#94a3b8; text-align:center; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand"><span class="brand-dot"></span><span>Tamás Csizmadia</span></div>
+      <nav class="nav"><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+    </header>
+    <section class="hero">
+      <div class="hero-top"><div class="eyebrow">Focused photography</div><div class="eyebrow">1000px preview</div></div>
+      <h1 class="headline">Minimal structure for maximum visual focus.</h1>
+      <p class="hero-copy">A restrained homepage that elevates the photographs with calm spacing, monochrome styling, and precise editorial hierarchy.</p>
+      <div class="metrics">
+        <div class="metric"><strong>11</strong><span>Nightscape pieces</span></div>
+        <div class="metric"><strong>7</strong><span>Swiss Alps scenes</span></div>
+        <div class="metric"><strong>53</strong><span>Indexed works</span></div>
+      </div>
+    </section>
+    <section id="gallery" class="gallery">
+      <article class="gallery-card"><div class="preview"></div><div class="info"><span>Nature</span><h3>Birdeye View</h3><p>Open composition balanced with clean typography for a modern collector experience.</p></div></article>
+      <article class="gallery-card"><div class="preview"></div><div class="info"><span>Himalayas</span><h3>Glacial Light</h3><p>Quiet atmosphere accentuated through neutral styling and minimal distractions.</p></div></article>
+      <article class="gallery-card"><div class="preview"></div><div class="info"><span>Nightscape</span><h3>Moonlit Ridge</h3><p>Subtle structure that ensures the image feeling remains central and powerful.</p></div></article>
+    </section>
+    <section id="about" class="about">
+      <section><strong>Design intent</strong><p>This direction is ideal if you want a premium portfolio site with minimal UI presence and a strong photographic focus.</p></section>
+      <section><strong>Visual tone</strong><p>Dark, calm, and carefully measured. Every interface element is secondary to the imagery, preserving elegance and clarity.</p></section>
+    </section>
+    <footer>Prototype 3 — Minimalist Focus. Simple, calm, and image-first.</footer>
+  </div>
+</body>
+</html>
