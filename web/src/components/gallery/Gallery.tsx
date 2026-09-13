@@ -236,21 +236,29 @@ export default function Gallery() {
           </div>
         </div>
 
-        <div className="mt-8 mb-8 flex flex-wrap gap-3">
-          {categories.map((category) => (
-            <button
-              key={category.value}
-              type="button"
-              onClick={() => setSelectedCategory(category.value)}
-              className={`rounded-full border px-4 py-2 text-sm transition ${
-                selectedCategory === category.value
-                  ? "border-[#D4AF37] bg-[#D4AF37]/10 text-[#D4AF37]"
-                  : "border-white/15 bg-white/5 text-white/70 hover:border-white/30 hover:text-white"
-              }`}
-            >
-              {category.label}
-            </button>
-          ))}
+        <div className="mt-14 mb-10 rounded-[28px] border border-white/10 bg-[#11131A] p-6 sm:p-8">
+          <p className="text-sm uppercase tracking-[0.35em] text-white/50">
+            {t("gallery.categoriesEyebrow")}
+          </p>
+          <h3 className="mt-3 text-2xl font-semibold text-white sm:text-3xl">
+            {t("gallery.categoriesHeading")}
+          </h3>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {categories.map((category) => (
+              <button
+                key={category.value}
+                type="button"
+                onClick={() => setSelectedCategory(category.value)}
+                className={`rounded-full border-2 px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.15em] transition ${
+                  selectedCategory === category.value
+                    ? "border-[#D4AF37] bg-[#D4AF37] text-[#0A0C10] shadow-[0_8px_24px_rgba(212,175,55,0.35)]"
+                    : "border-white/15 bg-white/5 text-white/70 hover:border-[#D4AF37]/50 hover:text-white"
+                }`}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
