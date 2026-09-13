@@ -185,7 +185,7 @@ export default function Gallery() {
                     setSelectedCategory(collection.category);
                     scrollToFeatured(index);
                   }}
-                  className="group w-[320px] shrink-0 snap-start overflow-hidden rounded-[28px] border border-white/10 bg-[#11131A] text-left transition hover:-translate-y-1 hover:border-white/15"
+                  className="group w-[82vw] max-w-[320px] shrink-0 snap-center overflow-hidden rounded-[28px] border border-white/10 bg-[#11131A] text-left transition hover:-translate-y-1 hover:border-white/15 sm:w-[320px]"
                 >
                   <div className="relative aspect-square overflow-hidden bg-slate-900">
                     <Image
@@ -327,22 +327,24 @@ export default function Gallery() {
       )}
 
       {lightboxPhoto && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 px-4 py-8 backdrop-blur-sm">
+        <div className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-black/95 px-4 py-8 backdrop-blur-sm sm:items-center">
           <button
             type="button"
             onClick={() => setLightboxPhoto(null)}
-            className="absolute right-4 top-4 rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm text-white transition hover:bg-white/10"
+            aria-label="Close full size view"
+            style={{ top: "max(1rem, env(safe-area-inset-top))", right: "max(1rem, env(safe-area-inset-right))" }}
+            className="fixed z-[70] rounded-full border border-white/15 bg-[#11131A] px-4 py-2.5 text-sm font-medium text-white shadow-lg shadow-black/40 transition hover:bg-white/10"
           >
             Close
           </button>
 
-          <div className="relative w-full max-w-[95rem] overflow-hidden rounded-[32px] border border-white/10 bg-[#11131A] p-6 shadow-[0_40px_120px_rgba(0,0,0,0.8)]">
+          <div className="relative mt-14 w-full max-w-[95rem] overflow-hidden rounded-[32px] border border-white/10 bg-[#11131A] p-4 shadow-[0_40px_120px_rgba(0,0,0,0.8)] sm:mt-0 sm:p-6">
             <div className="mb-6">
-              <h3 className="text-3xl font-semibold text-white">{lightboxPhoto.title}</h3>
+              <h3 className="text-2xl font-semibold text-white sm:text-3xl">{lightboxPhoto.title}</h3>
               <p className="mt-2 text-sm text-white/70">{lightboxPhoto.location}</p>
             </div>
 
-            <div className="relative mx-auto min-h-[930px] max-h-[calc(100vh-6rem)] max-w-[1500px] overflow-hidden rounded-[28px] bg-slate-950 shadow-inner shadow-black/50">
+            <div className="relative mx-auto min-h-[60vh] max-h-[calc(100vh-10rem)] max-w-[1500px] overflow-hidden rounded-[28px] bg-slate-950 shadow-inner shadow-black/50 sm:min-h-[930px] sm:max-h-[calc(100vh-6rem)]">
               <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/60" />
               <div
                 className="absolute inset-0 flex items-center justify-center bg-black"
