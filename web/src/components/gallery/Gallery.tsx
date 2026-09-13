@@ -259,7 +259,24 @@ export default function Gallery() {
               key={photo.id}
               className="group overflow-hidden rounded-[28px] border border-white/10 bg-[#11131A] shadow-[0_30px_80px_rgba(0,0,0,0.24)] transition hover:-translate-y-1 hover:border-white/15"
             >
-              <div className="relative aspect-square overflow-hidden rounded-t-[28px] border-b border-white/10">
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => {
+                  setLightboxLoading(true);
+                  setLightboxError(false);
+                  setLightboxPhoto(photo);
+                }}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setLightboxLoading(true);
+                    setLightboxError(false);
+                    setLightboxPhoto(photo);
+                  }
+                }}
+                className="relative aspect-square cursor-pointer overflow-hidden rounded-t-[28px] border-b border-white/10"
+              >
                 <Image
                   src={photo.image}
                   alt={photo.title}
@@ -281,7 +298,6 @@ export default function Gallery() {
               </div>
               <div className="space-y-4 p-6">
                 <div className="flex items-center justify-between text-sm uppercase tracking-[0.35em] text-white/50">
-                  <span>{t(`categories.${photo.category}`)}</span>
                   <span>{t(`categories.${photo.category}`)}</span>
                 </div>
                 <div>
