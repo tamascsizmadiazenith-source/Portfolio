@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { useTranslation } from "@/i18n/dictionary";
+import { sizeGuideImages } from "@/data/size-guide-images";
 
 type AcquisitionOverlayProps = {
   photo: {
@@ -71,7 +72,6 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
   const [size, setSize] = useState(paperLandscapeOptions[1].label);
   const [showSizeGuide, setShowSizeGuide] = useState(false);
   const [sizeGuideIndex, setSizeGuideIndex] = useState(0);
-  const [sizeGuideImages, setSizeGuideImages] = useState<string[]>([]);
   const { addItem } = useCart();
 
   useEffect(() => {
@@ -83,21 +83,7 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
   }, [onClose]);
 
   useEffect(() => {
-    if (!showSizeGuide) return;
-    // Load example images from the examples folder
-    const loadExamples = async () => {
-      try {
-        const response = await fetch("/api/list-images?path=/photos/walls/examples");
-        const data = await response.json();
-        if (data.images) {
-          setSizeGuideImages(data.images);
-          setSizeGuideIndex(0);
-        }
-      } catch (error) {
-        console.error("Error loading size guide examples:", error);
-      }
-    };
-    loadExamples();
+    if (showSizeGuide) setSizeGuideIndex(0);
   }, [showSizeGuide]);
 
   const handleAcquire = () => {

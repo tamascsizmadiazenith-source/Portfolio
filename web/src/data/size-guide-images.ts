@@ -1,0 +1,22 @@
+export const sizeGuideImages: string[] = [
+  "/photos-web/walls/examples/example_30x40.png",
+  "/photos-web/walls/examples/example_30x45.png",
+  "/photos-web/walls/examples/example_40x30.png",
+  "/photos-web/walls/examples/example_40x60.png",
+  "/photos-web/walls/examples/example_45x30.jpg",
+  "/photos-web/walls/examples/example_45x60.png",
+  "/photos-web/walls/examples/example_50x75.png",
+  "/photos-web/walls/examples/example_60x30.png",
+  "/photos-web/walls/examples/example_60x40.jpg",
+  "/photos-web/walls/examples/example_60x45.png",
+  "/photos-web/walls/examples/example_60x80.png",
+  "/photos-web/walls/examples/example_60x90.png",
+  "/photos-web/walls/examples/example_65x24.png",
+  "/photos-web/walls/examples/example_75x50.jpg",
+  "/photos-web/walls/examples/example_80x60.png",
+  "/photos-web/walls/examples/example_81x30.png",
+  "/photos-web/walls/examples/example_90x30.png",
+  "/photos-web/walls/examples/example_90x60.jpg",
+  "/photos-web/walls/examples/example_108x40.png",
+  "/photos-web/walls/examples/example_120x40.png"
+];

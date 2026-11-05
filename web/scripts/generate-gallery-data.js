@@ -13,6 +13,11 @@ const webPhotosSegment = "photos-web";
 
 const galleryOutputFile = path.join(process.cwd(), "src", "data", "gallery-photos.ts");
 const slideshowOutputFile = path.join(process.cwd(), "src", "data", "slideshow-photos.ts");
+const sizeGuideOutputFile = path.join(process.cwd(), "src", "data", "size-guide-images.ts");
+
+// Unlike public/photos/Gallery (gitignored originals), public/photos-web is the committed
+// mirror that actually ships, so it's present in every environment including Vercel builds.
+const sizeGuideWebDir = path.join(process.cwd(), "public", "photos-web", "walls", "examples");
 
 const IMAGE_EXT = /\.(jpe?g|png|webp|avif)$/i;
 
@@ -166,6 +171,18 @@ function generateSlideshowData(photoItems) {
   console.log(`Generated ${slides.length} slideshow entries to ${slideshowOutputFile}`);
 }
 
+function generateSizeGuideData() {
+  const files = listImageFiles(sizeGuideWebDir);
+  const images = files.map((file) => toPublicPath("photos-web", "walls", "examples", file));
+
+  const output =
+    `export const sizeGuideImages: string[] = ${JSON.stringify(images, null, 2)};\n`;
+
+  fs.mkdirSync(path.dirname(sizeGuideOutputFile), { recursive: true });
+  fs.writeFileSync(sizeGuideOutputFile, output, "utf8");
+  console.log(`Generated ${images.length} size guide images to ${sizeGuideOutputFile}`);
+}
+
 if (!fs.existsSync(photosDir)) {
   console.log(
     `No ${photosDir} folder found (expected on deploy environments) — keeping existing generated data files as-is.`,
@@ -174,3 +191,6 @@ if (!fs.existsSync(photosDir)) {
   const photoItems = generateGalleryData();
   generateSlideshowData(photoItems);
 }
+
+// Sourced from the committed photos-web mirror, so this runs in every environment.
+generateSizeGuideData();
