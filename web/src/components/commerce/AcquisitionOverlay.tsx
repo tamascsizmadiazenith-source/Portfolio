@@ -398,13 +398,18 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
 
             <div className="mt-6 overflow-hidden rounded-[16px] bg-white/5">
               <Image
-                src={sizeGuideImages[sizeGuideIndex]}
+                src={sizeGuideImages[sizeGuideIndex].image}
                 alt={`Size example ${sizeGuideIndex + 1}`}
                 width={600}
                 height={600}
                 className="w-full h-auto"
               />
             </div>
+            {sizeGuideImages[sizeGuideIndex].label && (
+              <p className="mt-3 text-center text-sm font-semibold uppercase tracking-[0.2em] text-[#D4AF37]">
+                {sizeGuideImages[sizeGuideIndex].label}
+              </p>
+            )}
 
             <div className="mt-4 flex items-center justify-between">
               <button

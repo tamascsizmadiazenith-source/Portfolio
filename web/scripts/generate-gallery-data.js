@@ -173,10 +173,18 @@ function generateSlideshowData(photoItems) {
 
 function generateSizeGuideData() {
   const files = listImageFiles(sizeGuideWebDir);
-  const images = files.map((file) => toPublicPath("photos-web", "walls", "examples", file));
+  const images = files.map((file) => {
+    const match = file.match(/(\d+)x(\d+)/i);
+    const label = match ? `${match[1]} x ${match[2]} cm` : null;
+    return { image: toPublicPath("photos-web", "walls", "examples", file), label };
+  });
 
   const output =
-    `export const sizeGuideImages: string[] = ${JSON.stringify(images, null, 2)};\n`;
+    `export type SizeGuideImage = {\n` +
+    `  image: string;\n` +
+    `  label: string | null;\n` +
+    `};\n\n` +
+    `export const sizeGuideImages: SizeGuideImage[] = ${JSON.stringify(images, null, 2)};\n`;
 
   fs.mkdirSync(path.dirname(sizeGuideOutputFile), { recursive: true });
   fs.writeFileSync(sizeGuideOutputFile, output, "utf8");
