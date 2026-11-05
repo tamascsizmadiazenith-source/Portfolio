@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { useTranslation } from "@/i18n/dictionary";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 type AcquisitionOverlayProps = {
   photo: {
@@ -69,6 +70,9 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
   const { t } = useTranslation();
   const [media, setMedia] = useState(mediaOptions[0]);
   const [size, setSize] = useState(paperLandscapeOptions[1].label);
+  const [showSizeGuide, setShowSizeGuide] = useState(false);
+  const [sizeGuideIndex, setSizeGuideIndex] = useState(0);
+  const [sizeGuideImages, setSizeGuideImages] = useState<string[]>([]);
   const { addItem } = useCart();
 
   useEffect(() => {
@@ -78,6 +82,24 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [onClose]);
+
+  useEffect(() => {
+    if (!showSizeGuide) return;
+    // Load example images from the examples folder
+    const loadExamples = async () => {
+      try {
+        const response = await fetch("/api/list-images?path=/photos/walls/examples");
+        const data = await response.json();
+        if (data.images) {
+          setSizeGuideImages(data.images);
+          setSizeGuideIndex(0);
+        }
+      } catch (error) {
+        console.error("Error loading size guide examples:", error);
+      }
+    };
+    loadExamples();
+  }, [showSizeGuide]);
 
   const handleAcquire = () => {
     addItem({
@@ -268,6 +290,13 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
                   </button>
                 ))}
               </div>
+              <button
+                type="button"
+                onClick={() => setShowSizeGuide(true)}
+                className="mt-3 text-sm text-white/60 hover:text-[#D4AF37] transition"
+              >
+                {t("acquisition.whichSize")}
+              </button>
             </div>
 
             <div className="rounded-[24px] border border-white/10 bg-[#0A0C10] p-6">
@@ -367,6 +396,55 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
           </div>
         </div>
       </div>
+
+      {showSizeGuide && sizeGuideImages.length > 0 && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 px-4 py-8 backdrop-blur-sm">
+          <div className="relative mx-auto w-full max-w-2xl rounded-[24px] border border-white/10 bg-[#11131A] p-8">
+            <button
+              type="button"
+              onClick={() => setShowSizeGuide(false)}
+              className="absolute right-4 top-4 rounded-full bg-white/10 p-2 hover:bg-white/15"
+            >
+              <X size={20} className="text-white" />
+            </button>
+
+            <h3 className="text-2xl font-semibold text-white">{t("acquisition.sizeGuideTitle")}</h3>
+            <p className="mt-2 text-sm text-white/70">{t("acquisition.sizeGuideDescription")}</p>
+
+            <div className="mt-6 overflow-hidden rounded-[16px] bg-white/5">
+              <Image
+                src={sizeGuideImages[sizeGuideIndex]}
+                alt={`Size example ${sizeGuideIndex + 1}`}
+                width={600}
+                height={600}
+                className="w-full h-auto"
+              />
+            </div>
+
+            <div className="mt-4 flex items-center justify-between">
+              <button
+                type="button"
+                onClick={() => setSizeGuideIndex((i) => (i - 1 + sizeGuideImages.length) % sizeGuideImages.length)}
+                className="rounded-full border border-white/15 bg-white/5 p-2 hover:bg-white/10"
+              >
+                <ChevronLeft size={20} className="text-white" />
+              </button>
+
+              <div className="text-sm text-white/70">
+                {sizeGuideIndex + 1} / {sizeGuideImages.length}
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setSizeGuideIndex((i) => (i + 1) % sizeGuideImages.length)}
+                className="rounded-full border border-white/15 bg-white/5 p-2 hover:bg-white/10"
+              >
+                <ChevronRight size={20} className="text-white" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

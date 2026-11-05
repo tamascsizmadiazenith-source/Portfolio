@@ -6,21 +6,49 @@ const WALLS_DIR = '/Users/sphot/portfolio/Portfolio/web/public/photos/walls';
 const GALLERY_DIR = '/Users/sphot/portfolio/Portfolio/web/public/photos/Gallery';
 const OUTPUT_DIR = '/Users/sphot/portfolio/Portfolio/web/public/photos/walls-composited';
 
-// White frame coordinates (consistent across all mockups based on analysis)
-const WHITE_FRAME = {
-  x: 177,
-  y: 275,
-  width: 530,
-  height: 635
-};
+// Parse mockup filename to get dimensions and calculate aspect ratio
+function getAspectRatio(filename) {
+  const match = filename.match(/LR_(\d+)x(\d+)/);
+  if (!match) return null;
+  const width = parseInt(match[1]);
+  const height = parseInt(match[2]);
+  return { width, height, ratio: width / height };
+}
 
-async function compositePhotoOnWall(photoPath, wallFilepath, outputPath) {
+// Get white frame position centered horizontally
+function getWhiteFrame(mockupWidth) {
+  // Approximate white frame based on center alignment
+  const frameWidth = 530;
+  const frameHeight = 635;
+  const x = (mockupWidth - frameWidth) / 2;
+  const y = 275;
+  return { x, y, width: frameWidth, height: frameHeight };
+}
+
+async function compositePhotoOnWall(photoPath, wallFilepath, wallFilename, outputPath) {
   try {
     const photoMetadata = await sharp(photoPath).metadata();
     const photoAspectRatio = photoMetadata.width / photoMetadata.height;
-    const targetAspectRatio = WHITE_FRAME.width / WHITE_FRAME.height;
+
+    // Get mockup aspect ratio
+    const mockupAspectData = getAspectRatio(wallFilename);
+    if (!mockupAspectData) return;
+
+    const mockupAspectRatio = mockupAspectData.ratio;
+
+    // Skip if aspect ratios don't match (tolerance of 5%)
+    if (Math.abs(photoAspectRatio - mockupAspectRatio) / mockupAspectRatio > 0.05) {
+      return;
+    }
+
+    // Get wall metadata to calculate centered white frame
+    const wallMetadata = await sharp(wallFilepath).metadata();
+    const WHITE_FRAME = getWhiteFrame(wallMetadata.width);
 
     let croppedPhotoBuffer;
+
+    // Crop/resize photo to match the white frame exactly
+    const targetAspectRatio = WHITE_FRAME.width / WHITE_FRAME.height;
 
     if (Math.abs(photoAspectRatio - targetAspectRatio) < 0.01) {
       // Aspect ratios match - just resize
@@ -52,8 +80,8 @@ async function compositePhotoOnWall(photoPath, wallFilepath, outputPath) {
     const composite = await sharp(wallFilepath)
       .composite([{
         input: croppedPhotoBuffer,
-        left: WHITE_FRAME.x,
-        top: WHITE_FRAME.y
+        left: Math.round(WHITE_FRAME.x),
+        top: Math.round(WHITE_FRAME.y)
       }])
       .toBuffer();
 
@@ -72,8 +100,8 @@ async function main() {
       fs.rmSync(OUTPUT_DIR, { recursive: true });
     }
 
-    console.log('Starting photo compositing with corrected frame bounds...\n');
-    console.log(`White frame: (${WHITE_FRAME.x}, ${WHITE_FRAME.y}) - ${WHITE_FRAME.width}×${WHITE_FRAME.height}\n`);
+    console.log('Starting photo compositing with aspect ratio matching...\n');
+    console.log('Only compositing photos onto mockups with matching aspect ratios\n');
 
     const locations = fs.readdirSync(GALLERY_DIR);
     let totalComposites = 0;
@@ -117,7 +145,7 @@ async function main() {
               `${photoNameWithoutExt}__on__${wallNameWithoutExt}.png`
             );
 
-            await compositePhotoOnWall(photoPath, wallFilepath, outputPath);
+            await compositePhotoOnWall(photoPath, wallFilepath, wallFile, outputPath);
             totalComposites++;
           }
         }

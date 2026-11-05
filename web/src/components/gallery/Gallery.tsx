@@ -4,7 +4,6 @@ import * as React from "react";
 import AcquisitionOverlay from "@/components/commerce/AcquisitionOverlay";
 import CartIndicator from "@/components/commerce/CartIndicator";
 import CheckoutOverlay from "@/components/commerce/CheckoutOverlay";
-import VirtualWall from "@/components/virtual-wall/VirtualWall";
 import { photoItems, type PhotoItem } from "@/data/gallery-photos";
 
 import Image from "next/image";
@@ -71,7 +70,6 @@ export default function Gallery() {
     ...categorySlugs.map((value) => ({ value, label: t(`categories.${value}`) })),
   ];
   const [activePhoto, setActivePhoto] = React.useState<PhotoItem | null>(null);
-  const [wallOpen, setWallOpen] = React.useState(false);
   const [acquireOpen, setAcquireOpen] = React.useState(false);
   const [checkoutOpen, setCheckoutOpen] = React.useState(false);
   const [lightboxPhoto, setLightboxPhoto] = React.useState<PhotoItem | null>(null);
@@ -87,11 +85,6 @@ export default function Gallery() {
       : photoItems.filter(
           (item) => item.category === selectedCategory && !item.isFavorite,
         );
-
-  function openWall(photo: PhotoItem) {
-    setActivePhoto(photo);
-    setWallOpen(true);
-  }
 
   function openAcquire(photo: PhotoItem) {
     setActivePhoto(photo);
@@ -315,13 +308,6 @@ export default function Gallery() {
                 <div className="flex flex-wrap gap-3 pt-2">
                   <button
                     type="button"
-                    onClick={() => openWall(photo)}
-                    className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white transition hover:border-[#D4AF37] hover:text-[#D4AF37]"
-                  >
-                    {t("gallery.viewOnWall")}
-                  </button>
-                  <button
-                    type="button"
                     onClick={() => openAcquire(photo)}
                     className="rounded-full border border-white/15 bg-[#D4AF37]/5 px-4 py-2 text-sm font-medium text-[#D4AF37] transition hover:bg-[#D4AF37]/10"
                   >
@@ -344,10 +330,6 @@ export default function Gallery() {
           ))}
         </div>
       </div>
-
-      {activePhoto && wallOpen && (
-        <VirtualWall photo={activePhoto} onClose={() => setWallOpen(false)} />
-      )}
 
       {activePhoto && acquireOpen && (
         <AcquisitionOverlay photo={activePhoto} onClose={() => setAcquireOpen(false)} />
