@@ -35,7 +35,6 @@ const dictionary = {
       myFavorites: "My Favorites",
       categoriesEyebrow: "Browse the full gallery",
       categoriesHeading: "Every collection, one click away.",
-      viewOnWall: "View on wall",
       acquirePiece: "Acquire this piece",
       viewFullSize: "View full size",
       close: "Close",
@@ -53,28 +52,6 @@ const dictionary = {
     },
     about: {
       eyebrow: "About the Artist",
-    },
-    virtualWall: {
-      title: "Virtual wall preview",
-      artwork: "Artwork",
-      roomSelection: "Room selection",
-      previewRoom: "Preview the artwork in this room",
-      selected: "Selected",
-      frameSize: "Frame size",
-      wallSurface: "Wall surface",
-      close: "Close",
-      rooms: {
-        gallery: "Gallery space",
-        "living-room": "Living room",
-        bedroom: "Bedroom wall",
-        apartment: "Apartment wall",
-        office: "Home office",
-      },
-      surfaces: {
-        "Gallery white": "Gallery white",
-        "Textured grey": "Textured grey",
-        "Warm timber": "Warm timber",
-      },
     },
     acquisition: {
       eyebrow: "Acquire this piece",
@@ -165,7 +142,6 @@ const dictionary = {
       myFavorites: "Kedvenceim",
       categoriesEyebrow: "Böngészd a teljes galériát",
       categoriesHeading: "Minden gyűjtemény egy kattintásra.",
-      viewOnWall: "Megtekintés a falon",
       acquirePiece: "Ezt a képet szeretném",
       viewFullSize: "Teljes méret",
       close: "Bezárás",
@@ -183,28 +159,6 @@ const dictionary = {
     },
     about: {
       eyebrow: "A művészről",
-    },
-    virtualWall: {
-      title: "Virtuális fal előnézet",
-      artwork: "Alkotás",
-      roomSelection: "Helyiség kiválasztása",
-      previewRoom: "Alkotás előnézete ebben a helyiségben",
-      selected: "Kiválasztva",
-      frameSize: "Keretméret",
-      wallSurface: "Falfelület",
-      close: "Bezárás",
-      rooms: {
-        gallery: "Galéria tér",
-        "living-room": "Nappali",
-        bedroom: "Hálószoba fal",
-        apartment: "Lakás fal",
-        office: "Otthoni iroda",
-      },
-      surfaces: {
-        "Gallery white": "Galéria fehér",
-        "Textured grey": "Struktúrált szürke",
-        "Warm timber": "Meleg fa",
-      },
     },
     acquisition: {
       eyebrow: "Ezt a képet szeretném",

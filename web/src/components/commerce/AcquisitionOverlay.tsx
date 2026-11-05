@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { useTranslation } from "@/i18n/dictionary";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
 type AcquisitionOverlayProps = {
   photo: {
@@ -403,9 +402,9 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
             <button
               type="button"
               onClick={() => setShowSizeGuide(false)}
-              className="absolute right-4 top-4 rounded-full bg-white/10 p-2 hover:bg-white/15"
+              className="absolute right-4 top-4 rounded-full bg-white/10 px-3 py-2 text-sm text-white hover:bg-white/15"
             >
-              <X size={20} className="text-white" />
+              ✕
             </button>
 
             <h3 className="text-2xl font-semibold text-white">{t("acquisition.sizeGuideTitle")}</h3>
@@ -425,9 +424,9 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
               <button
                 type="button"
                 onClick={() => setSizeGuideIndex((i) => (i - 1 + sizeGuideImages.length) % sizeGuideImages.length)}
-                className="rounded-full border border-white/15 bg-white/5 p-2 hover:bg-white/10"
+                className="rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm text-white hover:bg-white/10"
               >
-                <ChevronLeft size={20} className="text-white" />
+                ‹
               </button>
 
               <div className="text-sm text-white/70">
@@ -437,9 +436,9 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
               <button
                 type="button"
                 onClick={() => setSizeGuideIndex((i) => (i + 1) % sizeGuideImages.length)}
-                className="rounded-full border border-white/15 bg-white/5 p-2 hover:bg-white/10"
+                className="rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm text-white hover:bg-white/10"
               >
-                <ChevronRight size={20} className="text-white" />
+                ›
               </button>
             </div>
           </div>
