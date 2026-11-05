@@ -74,7 +74,23 @@ function readFavoriteNames() {
   );
 }
 
-// Each subfolder of public/photos/Gallery is a category; each file name (minus extension) is the photo title.
+// Each subfolder of public/photos/Gallery is a category. Within a category, image files may
+// sit directly in the folder, or be sorted one level deeper into orientation subfolders
+// (horizontal/vertical/panorama) — both layouts are scanned. Each file name (minus extension)
+// is the photo title, and photos-web mirrors them flat, so the generated URL never includes
+// the orientation segment.
+function listCategoryImageFiles(categoryPath) {
+  const direct = listImageFiles(categoryPath).map((file) => ({ file, dir: categoryPath }));
+  const subdirs = listDirs(categoryPath);
+  const nested = subdirs.flatMap((subdir) => {
+    const subdirPath = path.join(categoryPath, subdir);
+    return listImageFiles(subdirPath).map((file) => ({ file, dir: subdirPath }));
+  });
+  return [...direct, ...nested].sort((a, b) =>
+    a.file.localeCompare(b.file, undefined, { numeric: true }),
+  );
+}
+
 function generateGalleryData() {
   const favoriteNames = readFavoriteNames();
   const categoryFolders = listDirs(galleryDir);
@@ -82,9 +98,9 @@ function generateGalleryData() {
   const photoItems = categoryFolders.flatMap((folder) => {
     const categoryLabel = folder;
     const category = slugify(folder);
-    const files = listImageFiles(path.join(galleryDir, folder));
+    const files = listCategoryImageFiles(path.join(galleryDir, folder));
 
-    return files.map((file) => {
+    return files.map(({ file }) => {
       const title = path.basename(file, path.extname(file));
       return {
         id: `${category}-${slugify(title)}`,
