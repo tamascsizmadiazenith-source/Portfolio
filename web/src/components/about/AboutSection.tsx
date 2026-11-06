@@ -117,7 +117,7 @@ export default function AboutSection() {
                       Munkásságomat nemzetközileg is elismerték. 2023-ban <strong>FIAP Aranyérmet</strong> nyertem az Open Color kategóriában az 5. Sopianae Nemzetközi Fotószalonon a <em>„The Guardian of the Stars”</em> című képemért — egy Tejút-panoráma, amelyet 2800 méter magasan, a svájci Alpok Steingletscher gleccsermezői felett készítettem. Ugyanebben az évben valóra váltottam régi álmomat: először jártam a Himalájában, és megmásztam első alpesi csúcsomat, a Piz Keschet.
                     </p>
                     <p>
-                      2026-ban elnyertem a rangos <strong>AFIAP</strong> címet, hivatalosan is a Nemzetközi Fotóművészeti Szövetség művészévé válva. Ugyanebben az évben <strong>Baden-Württemberg 3. legjobb fotósa</strong> lettem, és <strong>1. helyezést</strong> értem el a DVF Abenteuer kategóriában a 14. Fotogipfel Fotófesztiválon a Piz Medel gerinctúráján készült <em>„Towards into the Unknown”</em> című fotómmal.
+                      2026-ban elnyertem a rangos <strong>AFIAP</strong> címet, hivatalosan is a Nemzetközi Fotóművészeti Szövetség művészévé válva. Ugyanebben az évben <em>„The Citadel of Night”</em> című Tejút-fotómmal a <strong>3. helyezést</strong> értem el Baden-Württemberg 2026-os legjobb fotósai között, és <strong>1. helyezést</strong> értem el a DVF Abenteuer kategóriában a 14. Fotogipfel Fotófesztiválon a Piz Medel gerinctúráján készült <em>„Towards into the Unknown”</em> című fotómmal.
                     </p>
                     <p className="text-white/64">
                       Munkáimat gyűjtők, kiállítások és olyan fine art terek számára válogatom, amelyek erős vizuális történeteket és időtálló minőséget keresnek. Számomra a fotózás több, mint képek alkotása — kaland, érzelem, és az emberi tapasztalat és a vadon közötti kapcsolat.
@@ -129,13 +129,24 @@ export default function AboutSection() {
                       My work has been internationally recognized. In 2023, I was awarded the <strong>FIAP Gold Medal</strong> in the Open Color category at the 5th Sopianae International Photo Salon for my image <em>“The Guardian of the Stars”</em> — a Milky Way panorama captured at 2,800 meters above the Steingletscher glacier fields in the Swiss Alps. That same year, I fulfilled a lifelong dream by visiting the Himalayas for the first time and summiting my first Alpine peak, Piz Kesch.
                     </p>
                     <p>
-                      In 2026, I earned the prestigious <strong>AFIAP</strong> distinction, officially becoming an Artist of the International Federation of Photographic Art. In the same year, I was ranked the <strong>3rd best photographer in Baden-Württemberg</strong> and won <strong>1st Prize</strong> in the DVF Abenteuer category at the 14th Fotogipfel Photo Festival with my photograph <em>“Towards into the Unknown”</em>, created during an alpine ridge traverse on Piz Medel.
+                      In 2026, I earned the prestigious <strong>AFIAP</strong> distinction, officially becoming an Artist of the International Federation of Photographic Art. That same year, my Milky Way photograph <em>“The Citadel of Night”</em> earned me <strong>3rd place</strong> among Baden-Württemberg’s best photographers of 2026, and I won <strong>1st Prize</strong> in the DVF Abenteuer category at the 14th Fotogipfel Photo Festival with my photograph <em>“Towards into the Unknown”</em>, created during an alpine ridge traverse on Piz Medel.
                     </p>
                     <p className="text-white/64">
                       The work is curated for collectors, exhibitions, and fine art spaces that seek strong visual stories and timeless quality. For me, photography is more than creating images — it is about adventure, emotion, and the connection between human experience and the wild.
                     </p>
                   </>
                 )}
+                <div className="overflow-hidden rounded-[30px] border border-white/10 bg-[#0F1218] p-3 shadow-[0_25px_50px_rgba(0,0,0,0.24)]">
+                  <div className="relative overflow-hidden rounded-[24px]">
+                    <Image
+                      src="/photos-web/about/medal_3rd_place.jpg"
+                      alt={hu ? "3. helyezés érme — Baden-Württemberg legjobb fotósai 2026" : "3rd place medal — Baden-Württemberg's best photographers 2026"}
+                      width={2400}
+                      height={1800}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

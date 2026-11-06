@@ -15,6 +15,26 @@ export default function GalleryNavDropdown({ linkClassName, rowClassName, onNavi
   const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement | null>(null);
+  const closeTimeoutRef = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function clearCloseTimeout() {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  }
+
+  function openNow() {
+    clearCloseTimeout();
+    setOpen(true);
+  }
+
+  function closeSoon() {
+    clearCloseTimeout();
+    closeTimeoutRef.current = setTimeout(() => setOpen(false), 300);
+  }
+
+  React.useEffect(() => clearCloseTimeout, []);
 
   React.useEffect(() => {
     if (!open) return;
@@ -36,6 +56,7 @@ export default function GalleryNavDropdown({ linkClassName, rowClassName, onNavi
   }, [open]);
 
   function close() {
+    clearCloseTimeout();
     setOpen(false);
     onNavigate?.();
   }
@@ -44,8 +65,8 @@ export default function GalleryNavDropdown({ linkClassName, rowClassName, onNavi
     <div
       ref={containerRef}
       className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={openNow}
+      onMouseLeave={closeSoon}
     >
       <div className={`flex items-center gap-1 ${rowClassName ?? ""}`}>
         <Link href="/#gallery" className={linkClassName} onClick={close}>
@@ -53,7 +74,7 @@ export default function GalleryNavDropdown({ linkClassName, rowClassName, onNavi
         </Link>
         <button
           type="button"
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => (open ? close() : openNow())}
           aria-expanded={open}
           aria-label="Toggle gallery chapters"
           className="rounded-full p-1 text-white/50 transition hover:text-[#D4AF37]"
@@ -65,17 +86,19 @@ export default function GalleryNavDropdown({ linkClassName, rowClassName, onNavi
       </div>
 
       {open && (
-        <div className="absolute left-0 top-full z-50 mt-2 max-h-[70vh] w-60 overflow-y-auto overscroll-contain rounded-[20px] border border-white/10 bg-[#11131A]/98 p-2 text-left normal-case tracking-normal shadow-[0_30px_80px_rgba(0,0,0,0.5)] backdrop-blur-md">
-          {categorySlugs.map((slug) => (
-            <Link
-              key={slug}
-              href={`/gallery/${slug}`}
-              onClick={close}
-              className="block rounded-2xl px-4 py-2.5 text-sm text-white/80 transition hover:bg-white/5 hover:text-[#D4AF37]"
-            >
-              {t(`categories.${slug}`)}
-            </Link>
-          ))}
+        <div className="absolute left-0 top-full z-50 pt-2">
+          <div className="max-h-[70vh] w-60 overflow-y-auto overscroll-contain rounded-[20px] border border-white/10 bg-[#11131A]/98 p-2 text-left normal-case tracking-normal shadow-[0_30px_80px_rgba(0,0,0,0.5)] backdrop-blur-md">
+            {categorySlugs.map((slug) => (
+              <Link
+                key={slug}
+                href={`/gallery/${slug}`}
+                onClick={close}
+                className="block rounded-2xl px-4 py-2.5 text-sm text-white/80 transition hover:bg-white/5 hover:text-[#D4AF37]"
+              >
+                {t(`categories.${slug}`)}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>
