@@ -1,23 +1,13 @@
 "use client";
 
 import * as React from "react";
-import AcquisitionOverlay from "@/components/commerce/AcquisitionOverlay";
-import CartIndicator from "@/components/commerce/CartIndicator";
-import CheckoutOverlay from "@/components/commerce/CheckoutOverlay";
-import { photoItems, type PhotoItem } from "@/data/gallery-photos";
-
 import Image from "next/image";
+import Link from "next/link";
+import PhotoGrid from "@/components/gallery/PhotoGrid";
+import { photoItems } from "@/data/gallery-photos";
+import { categoryLabelByValue, categorySlugs, photosByCategory } from "@/lib/gallery-categories";
+
 import { useTranslation } from "@/i18n/dictionary";
-
-// Category filter chips are derived from whatever folders exist under public/photos/Gallery.
-const categoryLabelByValue = new Map<string, string>();
-for (const item of photoItems) {
-  if (!categoryLabelByValue.has(item.category)) {
-    categoryLabelByValue.set(item.category, item.categoryLabel);
-  }
-}
-
-const categorySlugs = Array.from(categoryLabelByValue.keys());
 
 const featuredCollectionDefs = [
   {
@@ -49,13 +39,6 @@ const featuredCollectionDefs = [
 
 // Cover images are picked from whatever currently exists in each category, so a folder
 // refresh (renamed/removed files) can never leave a featured card pointing at a 404.
-const photosByCategory = new Map<string, PhotoItem[]>();
-for (const item of photoItems) {
-  const list = photosByCategory.get(item.category);
-  if (list) list.push(item);
-  else photosByCategory.set(item.category, [item]);
-}
-
 const featuredCollections = featuredCollectionDefs.flatMap((def) => {
   const photos = photosByCategory.get(def.category);
   if (!photos || photos.length === 0) return [];
@@ -63,33 +46,12 @@ const featuredCollections = featuredCollectionDefs.flatMap((def) => {
   return [{ ...def, image: cover.image }];
 });
 
+const favoritePhotos = photoItems.filter((item) => item.isFavorite);
+
 export default function Gallery() {
   const { t } = useTranslation();
-  const categories = [
-    { value: "all", label: t("gallery.myFavorites") },
-    ...categorySlugs.map((value) => ({ value, label: t(`categories.${value}`) })),
-  ];
-  const [activePhoto, setActivePhoto] = React.useState<PhotoItem | null>(null);
-  const [acquireOpen, setAcquireOpen] = React.useState(false);
-  const [checkoutOpen, setCheckoutOpen] = React.useState(false);
-  const [lightboxPhoto, setLightboxPhoto] = React.useState<PhotoItem | null>(null);
-  const [lightboxLoading, setLightboxLoading] = React.useState(false);
-  const [lightboxError, setLightboxError] = React.useState(false);
-  const [selectedCategory, setSelectedCategory] = React.useState("all");
   const [activeScrollIndex, setActiveScrollIndex] = React.useState(0);
   const featuredScrollRef = React.useRef<HTMLDivElement | null>(null);
-
-  const filteredPhotos =
-    selectedCategory === "all"
-      ? photoItems.filter((item) => item.isFavorite)
-      : photoItems.filter(
-          (item) => item.category === selectedCategory && !item.isFavorite,
-        );
-
-  function openAcquire(photo: PhotoItem) {
-    setActivePhoto(photo);
-    setAcquireOpen(true);
-  }
 
   React.useEffect(() => {
     const container = featuredScrollRef.current;
@@ -140,7 +102,6 @@ export default function Gallery() {
 
   return (
     <section id="gallery" className="relative bg-[#0A0C10] py-20 text-white">
-      <CartIndicator onOpen={() => setCheckoutOpen(true)} />
       <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
         <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -173,14 +134,10 @@ export default function Gallery() {
 
           <div className="-mx-6 overflow-x-auto pb-4 px-6 sm:-mx-10 sm:px-10 lg:-mx-16 lg:px-16" ref={featuredScrollRef}>
             <div className="flex gap-5 snap-x snap-mandatory">
-              {featuredCollections.map((collection, index) => (
-                <button
+              {featuredCollections.map((collection) => (
+                <Link
                   key={collection.category}
-                  type="button"
-                  onClick={() => {
-                    setSelectedCategory(collection.category);
-                    scrollToFeatured(index);
-                  }}
+                  href={`/gallery/${collection.category}`}
                   className="group w-[82vw] max-w-[320px] shrink-0 snap-center overflow-hidden rounded-[28px] border border-white/10 bg-[#11131A] text-left transition hover:-translate-y-1 hover:border-white/15 sm:w-[320px]"
                 >
                   <div className="relative aspect-square overflow-hidden bg-slate-900">
@@ -208,7 +165,7 @@ export default function Gallery() {
                       <span aria-hidden="true">→</span>
                     </div>
                   </div>
-                </button>
+                </Link>
               ))}
             </div>
           </div>
@@ -237,172 +194,23 @@ export default function Gallery() {
             {t("gallery.categoriesHeading")}
           </h3>
           <div className="mt-6 flex flex-wrap gap-3">
-            {categories.map((category) => (
-              <button
-                key={category.value}
-                type="button"
-                onClick={() => setSelectedCategory(category.value)}
-                className={`rounded-full border-2 px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.15em] transition ${
-                  selectedCategory === category.value
-                    ? "border-[#D4AF37] bg-[#D4AF37] text-[#0A0C10] shadow-[0_8px_24px_rgba(212,175,55,0.35)]"
-                    : "border-white/15 bg-white/5 text-white/70 hover:border-[#D4AF37]/50 hover:text-white"
-                }`}
+            {categorySlugs.map((slug) => (
+              <Link
+                key={slug}
+                href={`/gallery/${slug}`}
+                className="rounded-full border-2 border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold uppercase tracking-[0.15em] text-white/70 transition hover:border-[#D4AF37]/50 hover:text-white"
               >
-                {category.label}
-              </button>
+                {t(`categories.${slug}`)}
+              </Link>
             ))}
           </div>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-          {filteredPhotos.map((photo) => (
-            <article
-              key={photo.id}
-              className="group overflow-hidden rounded-[28px] border border-white/10 bg-[#11131A] shadow-[0_30px_80px_rgba(0,0,0,0.24)] transition hover:-translate-y-1 hover:border-white/15"
-            >
-              <div
-                role="button"
-                tabIndex={0}
-                onClick={() => {
-                  setLightboxLoading(true);
-                  setLightboxError(false);
-                  setLightboxPhoto(photo);
-                }}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    setLightboxLoading(true);
-                    setLightboxError(false);
-                    setLightboxPhoto(photo);
-                  }
-                }}
-                className="relative aspect-square cursor-pointer overflow-hidden rounded-t-[28px] border-b border-white/10"
-              >
-                <Image
-                  src={photo.image}
-                  alt={photo.title}
-                  fill
-                  loading="lazy"
-                  unoptimized
-                  className="object-cover object-center transition duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/70" />
-                <div className="absolute inset-x-0 bottom-0 px-4 pb-4 opacity-0 transition duration-300 group-hover:opacity-100">
-                  <div className="rounded-3xl bg-black/70 px-4 py-3 text-sm text-white/90 backdrop-blur-sm">
-                    <div className="font-semibold">{photo.title}</div>
-                    <div className="mt-1 text-xs uppercase tracking-[0.35em] text-white/70">
-                      {t(`categories.${photo.category}`)}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-4 p-6">
-                <div className="flex items-center justify-between text-sm uppercase tracking-[0.35em] text-white/50">
-                  <span>{t(`categories.${photo.category}`)}</span>
-                </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-white">{photo.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/70">{t(`categories.${photo.category}`)} {t("gallery.collectionWord")}</p>
-                </div>
-                <div className="flex flex-wrap gap-3 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => openAcquire(photo)}
-                    className="rounded-full border border-white/15 bg-[#D4AF37]/5 px-4 py-2 text-sm font-medium text-[#D4AF37] transition hover:bg-[#D4AF37]/10"
-                  >
-                    {t("gallery.acquirePiece")}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setLightboxLoading(true);
-                      setLightboxError(false);
-                      setLightboxPhoto(photo);
-                    }}
-                    className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white transition hover:border-[#D4AF37] hover:text-[#D4AF37]"
-                  >
-                    {t("gallery.viewFullSize")}
-                  </button>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
+        <p className="mb-6 text-sm uppercase tracking-[0.35em] text-white/50">
+          {t("gallery.myFavorites")}
+        </p>
+        <PhotoGrid photos={favoritePhotos} />
       </div>
-
-      {activePhoto && acquireOpen && (
-        <AcquisitionOverlay photo={activePhoto} onClose={() => setAcquireOpen(false)} />
-      )}
-
-      {lightboxPhoto && (
-        <div className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-black/95 px-4 py-8 backdrop-blur-sm sm:items-center">
-          <button
-            type="button"
-            onClick={() => setLightboxPhoto(null)}
-            aria-label="Close full size view"
-            style={{ top: "max(1rem, env(safe-area-inset-top))", right: "max(1rem, env(safe-area-inset-right))" }}
-            className="fixed z-[70] rounded-full border border-white/15 bg-[#11131A] px-4 py-2.5 text-sm font-medium text-white shadow-lg shadow-black/40 transition hover:bg-white/10"
-          >
-            {t("gallery.close")}
-          </button>
-
-          <div className="relative mt-14 w-full max-w-[95rem] overflow-hidden rounded-[32px] border border-white/10 bg-[#11131A] p-4 shadow-[0_40px_120px_rgba(0,0,0,0.8)] sm:mt-0 sm:p-6">
-            <div className="mb-6">
-              <h3 className="text-2xl font-semibold text-white sm:text-3xl">{lightboxPhoto.title}</h3>
-              <p className="mt-2 text-sm text-white/70">{t(`categories.${lightboxPhoto.category}`)}</p>
-            </div>
-
-            <div className="relative mx-auto min-h-[60vh] max-h-[calc(100vh-10rem)] max-w-[1500px] overflow-hidden rounded-[28px] bg-slate-950 shadow-inner shadow-black/50 sm:min-h-[930px] sm:max-h-[calc(100vh-6rem)]">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-black/60" />
-              <div
-                className="absolute inset-0 flex items-center justify-center bg-black"
-                onContextMenu={(event) => event.preventDefault()}
-              >
-                <div className="relative h-full w-full overflow-hidden">
-                  {lightboxLoading && (
-                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/80">
-                      <div className="flex flex-col items-center gap-3 rounded-[24px] border border-white/10 bg-black/80 px-6 py-5 text-center text-white/75 shadow-lg">
-                        <div className="h-3 w-56 overflow-hidden rounded-full bg-white/10">
-                          <div className="h-full w-3/4 animate-pulse rounded-full bg-white/40" />
-                        </div>
-                        <div className="text-sm">{t("gallery.loadingPreview")}</div>
-                      </div>
-                    </div>
-                  )}
-
-                  {lightboxError ? (
-                    <div className="flex min-h-[220px] w-full items-center justify-center rounded-[24px] border border-dashed border-white/20 bg-[#0B0D13] px-6 py-8 text-center text-sm text-white/70">
-                      {t("gallery.unableToLoad")}
-                      <br />
-                      {t("gallery.tryAgain")}
-                    </div>
-                  ) : (
-                    <Image
-                      key={lightboxPhoto.id}
-                      src={lightboxPhoto.image}
-                      alt={lightboxPhoto.title}
-                      fill
-                      className={`object-contain transition duration-300 ${
-                        lightboxLoading ? "opacity-0" : "opacity-100"
-                      }`}
-                      sizes="(max-width: 1500px) 100vw, 1500px"
-                      unoptimized
-                      onLoad={() => setLightboxLoading(false)}
-                      onError={() => {
-                        setLightboxLoading(false);
-                        setLightboxError(true);
-                      }}
-                    />
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {checkoutOpen && <CheckoutOverlay onClose={() => setCheckoutOpen(false)} />}
     </section>
   );
 }

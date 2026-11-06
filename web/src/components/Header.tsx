@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useTranslation } from "@/i18n/dictionary";
 import LanguageSwitch from "@/components/LanguageSwitch";
+import GalleryNavDropdown from "@/components/gallery/GalleryNavDropdown";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -34,7 +35,7 @@ export default function Header() {
           </div>
         </Link>
         <nav className="hidden items-center gap-6 text-sm uppercase tracking-[0.35em] text-white/70 md:flex">
-          <Link href="/#gallery" className="transition hover:text-[#D4AF37]">{t("nav.gallery")}</Link>
+          <GalleryNavDropdown linkClassName="transition hover:text-[#D4AF37]" />
           <Link href="/photo-tours" className="transition hover:text-[#D4AF37]">{t("nav.photoTours")}</Link>
           <Link href="/#about" className="transition hover:text-[#D4AF37]">{t("nav.about")}</Link>
           <Link href="/contact" className="transition hover:text-[#D4AF37]">{t("nav.contact")}</Link>
@@ -61,7 +62,11 @@ export default function Header() {
       </div>
       {menuOpen && (
         <nav className="flex flex-col gap-1 border-t border-white/10 bg-[#0A0C10]/98 px-6 py-4 text-sm uppercase tracking-[0.35em] text-white/80 md:hidden">
-          <Link href="/#gallery" className="rounded-xl px-3 py-3 transition hover:bg-white/5 hover:text-[#D4AF37]" onClick={() => setMenuOpen(false)}>{t("nav.gallery")}</Link>
+          <GalleryNavDropdown
+            linkClassName="flex-1 rounded-xl px-3 py-3 transition hover:bg-white/5 hover:text-[#D4AF37]"
+            rowClassName="rounded-xl"
+            onNavigate={() => setMenuOpen(false)}
+          />
           <Link href="/photo-tours" className="rounded-xl px-3 py-3 transition hover:bg-white/5 hover:text-[#D4AF37]" onClick={() => setMenuOpen(false)}>{t("nav.photoTours")}</Link>
           <Link href="/#about" className="rounded-xl px-3 py-3 transition hover:bg-white/5 hover:text-[#D4AF37]" onClick={() => setMenuOpen(false)}>{t("nav.about")}</Link>
           <Link href="/contact" className="rounded-xl px-3 py-3 transition hover:bg-white/5 hover:text-[#D4AF37]" onClick={() => setMenuOpen(false)}>{t("nav.contact")}</Link>
