@@ -14,6 +14,7 @@ type AcquisitionOverlayProps = {
     description: string;
     location: string;
     image?: string;
+    orientation?: "horizontal" | "vertical" | "panorama";
   };
   onClose: () => void;
 };
@@ -59,6 +60,14 @@ const paperPortraitOptions: SizeOption[] = paperLandscapeOptions.map(({ label, p
   label: rotateSizeLabel(label),
   price,
 }));
+const panoramaSizeOptions: SizeOption[] = [
+  { label: "60 x 30 cm" },
+  { label: "65 x 24 cm" },
+  { label: "81 x 30 cm" },
+  { label: "90 x 30 cm" },
+  { label: "108 x 40 cm" },
+  { label: "120 x 40 cm" },
+];
 
 function getSizeRatio(option: string) {
   const match = option.match(/(\d+)\s*x\s*(\d+)\s*cm/);
@@ -129,13 +138,17 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
     return natural.h > natural.w;
   }, [natural]);
 
+  const isPanorama = photo.orientation === "panorama";
+
   const sizeOptions = useMemo<SizeOption[]>(() => {
+    if (isPanorama) return panoramaSizeOptions;
+
     if (media === "Canvas") {
       return isPortraitPhoto ? canvasPortraitOptions : canvasLandscapeOptions;
     }
 
     return isPortraitPhoto ? paperPortraitOptions : paperLandscapeOptions;
-  }, [isPortraitPhoto, media]);
+  }, [isPanorama, isPortraitPhoto, media]);
 
   const price = useMemo(() => {
     const selectedOption = sizeOptions.find((option) => option.label === size);

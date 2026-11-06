@@ -8,6 +8,7 @@ export type PhotoItem = {
   location: string;
   image: string;
   accent: string;
+  orientation?: "horizontal" | "vertical" | "panorama";
 };
 
 export const photoItems: PhotoItem[] = [
@@ -20,7 +21,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Adventure collection",
     "location": "Adventure",
     "image": "/photos-web/Gallery/Adventure/Descent%20on%20the%20edge.jpg",
-    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "adventure-facing-the-challenge",
@@ -31,7 +33,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Adventure collection",
     "location": "Adventure",
     "image": "/photos-web/Gallery/Adventure/Facing%20the%20challenge.jpg",
-    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "adventure-glacier-walk",
@@ -42,7 +45,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Adventure collection",
     "location": "Adventure",
     "image": "/photos-web/Gallery/Adventure/Glacier%20walk.jpg",
-    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "adventure-marching",
@@ -53,7 +57,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Adventure collection",
     "location": "Adventure",
     "image": "/photos-web/Gallery/Adventure/Marching.jpg",
-    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "adventure-old-mens-walk",
@@ -64,7 +69,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Adventure collection",
     "location": "Adventure",
     "image": "/photos-web/Gallery/Adventure/Old%20mens%20walk.jpg",
-    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "adventure-snowshoes-team",
@@ -75,7 +81,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Adventure collection",
     "location": "Adventure",
     "image": "/photos-web/Gallery/Adventure/Snowshoes%20team.jpg",
-    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "adventure-the-shadows",
@@ -86,7 +93,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Adventure collection",
     "location": "Adventure",
     "image": "/photos-web/Gallery/Adventure/The%20shadows.jpg",
-    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "adventure-the-tierbergli-breakout",
@@ -97,7 +105,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Adventure collection",
     "location": "Adventure",
     "image": "/photos-web/Gallery/Adventure/The%20Tierbergli%20breakout.jpg",
-    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "adventure-towards-into-the-unknown",
@@ -108,7 +117,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Adventure collection",
     "location": "Adventure",
     "image": "/photos-web/Gallery/Adventure/Towards%20into%20the%20unknown.jpg",
-    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "adventure-up-and-down",
@@ -119,7 +129,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Adventure collection",
     "location": "Adventure",
     "image": "/photos-web/Gallery/Adventure/Up%20and%20down.jpg",
-    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-900 via-stone-800 to-slate-950",
+    "orientation": "panorama"
   },
   {
     "id": "austria-ehrwald-dawn",
@@ -130,7 +141,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Austria collection",
     "location": "Austria",
     "image": "/photos-web/Gallery/Austria/Ehrwald%20dawn.jpg",
-    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "austria-erdmaenchen-in-sunset",
@@ -141,7 +153,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Austria collection",
     "location": "Austria",
     "image": "/photos-web/Gallery/Austria/Erdmaenchen%20in%20sunset.jpg",
-    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "austria-lienzer-dolomites-1",
@@ -152,7 +165,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Austria collection",
     "location": "Austria",
     "image": "/photos-web/Gallery/Austria/Lienzer%20Dolomites%201.jpg",
-    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "austria-lienzer-dolomites-2",
@@ -163,7 +177,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Austria collection",
     "location": "Austria",
     "image": "/photos-web/Gallery/Austria/Lienzer%20Dolomites%202.jpg",
-    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "austria-mirrored-clouds",
@@ -174,7 +189,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Austria collection",
     "location": "Austria",
     "image": "/photos-web/Gallery/Austria/Mirrored%20clouds.jpg",
-    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "austria-mystical-silianerhuette",
@@ -185,7 +201,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Austria collection",
     "location": "Austria",
     "image": "/photos-web/Gallery/Austria/Mystical%20Silianerhuette.jpg",
-    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "austria-sunset-of-the-rhododendrons",
@@ -196,7 +213,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Austria collection",
     "location": "Austria",
     "image": "/photos-web/Gallery/Austria/Sunset%20of%20the%20Rhododendrons.jpg",
-    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "austria-the-mountains-gentle-voice",
@@ -207,7 +225,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Austria collection",
     "location": "Austria",
     "image": "/photos-web/Gallery/Austria/The%20mountains%20gentle%20voice.jpg",
-    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-emerald-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "birdeye-beetle-on-the-snake",
@@ -218,7 +237,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Birdeye collection",
     "location": "Birdeye",
     "image": "/photos-web/Gallery/Birdeye/Beetle%20on%20the%20snake.jpg",
-    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "birdeye-blue-and-green",
@@ -229,7 +249,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Birdeye collection",
     "location": "Birdeye",
     "image": "/photos-web/Gallery/Birdeye/blue%20and%20green.jpg",
-    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "birdeye-blue",
@@ -240,7 +261,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Birdeye collection",
     "location": "Birdeye",
     "image": "/photos-web/Gallery/Birdeye/Blue.jpg",
-    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "birdeye-dawn-meets-the-autumn-on-the-horizon",
@@ -251,7 +273,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Birdeye collection",
     "location": "Birdeye",
     "image": "/photos-web/Gallery/Birdeye/Dawn%20meets%20the%20autumn%20on%20the%20horizon.jpg",
-    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "birdeye-delta",
@@ -262,7 +285,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Birdeye collection",
     "location": "Birdeye",
     "image": "/photos-web/Gallery/Birdeye/delta.jpg",
-    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "birdeye-pointing-finger",
@@ -273,7 +297,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Birdeye collection",
     "location": "Birdeye",
     "image": "/photos-web/Gallery/Birdeye/Pointing%20finger.jpg",
-    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "birdeye-red-in-the-wood",
@@ -284,7 +309,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Birdeye collection",
     "location": "Birdeye",
     "image": "/photos-web/Gallery/Birdeye/Red%20in%20the%20wood.jpg",
-    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "france-alpine-glow-of-the-french-dolomites",
@@ -295,7 +321,8 @@ export const photoItems: PhotoItem[] = [
     "description": "France collection",
     "location": "France",
     "image": "/photos-web/Gallery/France/Alpine%20glow%20of%20the%20french%20dolomites.jpg",
-    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950",
+    "orientation": "panorama"
   },
   {
     "id": "france-dramatic-evening-of-the-mont-thabor-refuge",
@@ -306,7 +333,8 @@ export const photoItems: PhotoItem[] = [
     "description": "France collection",
     "location": "France",
     "image": "/photos-web/Gallery/France/Dramatic%20evening%20of%20the%20Mont%20Thabor%20refuge.jpg",
-    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "france-dreamland",
@@ -317,7 +345,8 @@ export const photoItems: PhotoItem[] = [
     "description": "France collection",
     "location": "France",
     "image": "/photos-web/Gallery/France/Dreamland.jpg",
-    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "france-leading-flowers",
@@ -328,7 +357,8 @@ export const photoItems: PhotoItem[] = [
     "description": "France collection",
     "location": "France",
     "image": "/photos-web/Gallery/France/Leading%20flowers.jpg",
-    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "france-moon-over-the-spikes",
@@ -339,7 +369,8 @@ export const photoItems: PhotoItem[] = [
     "description": "France collection",
     "location": "France",
     "image": "/photos-web/Gallery/France/Moon%20over%20the%20spikes.jpg",
-    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "france-the-flow-into-the-light",
@@ -350,7 +381,8 @@ export const photoItems: PhotoItem[] = [
     "description": "France collection",
     "location": "France",
     "image": "/photos-web/Gallery/France/The%20flow%20into%20the%20light.jpg",
-    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "france-val-clariee-in-starlight",
@@ -361,7 +393,8 @@ export const photoItems: PhotoItem[] = [
     "description": "France collection",
     "location": "France",
     "image": "/photos-web/Gallery/France/Val%20Clariee%20in%20starlight.jpg",
-    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-indigo-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "germany-gentle-evening-before-the-storm",
@@ -372,7 +405,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Germany collection",
     "location": "Germany",
     "image": "/photos-web/Gallery/Germany/Gentle%20evening%20before%20the%20storm.jpg",
-    "accent": "bg-gradient-to-br from-teal-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-teal-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "germany-hohenzollern-in-golden-shine",
@@ -383,7 +417,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Germany collection",
     "location": "Germany",
     "image": "/photos-web/Gallery/Germany/Hohenzollern%20in%20golden%20shine.jpg",
-    "accent": "bg-gradient-to-br from-teal-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-teal-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "germany-koenigssee-1",
@@ -394,7 +429,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Germany collection",
     "location": "Germany",
     "image": "/photos-web/Gallery/Germany/Koenigssee%201.jpg",
-    "accent": "bg-gradient-to-br from-teal-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-teal-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "germany-sunstar-of-the-entschenkopf",
@@ -405,7 +441,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Germany collection",
     "location": "Germany",
     "image": "/photos-web/Gallery/Germany/Sunstar%20of%20the%20Entschenkopf.jpg",
-    "accent": "bg-gradient-to-br from-teal-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-teal-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "germany-the-tree-of-the-zellerhorn",
@@ -416,7 +453,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Germany collection",
     "location": "Germany",
     "image": "/photos-web/Gallery/Germany/The%20tree%20of%20the%20Zellerhorn.jpg",
-    "accent": "bg-gradient-to-br from-teal-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-teal-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "germany-watzmann-in-first-snow-of-the-season",
@@ -427,7 +465,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Germany collection",
     "location": "Germany",
     "image": "/photos-web/Gallery/Germany/Watzmann%20in%20first%20snow%20of%20the%20season.jpg",
-    "accent": "bg-gradient-to-br from-teal-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-teal-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "himalayas-at-the-mouth-of-the-cow",
@@ -438,7 +477,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Himalayas collection",
     "location": "Himalayas",
     "image": "/photos-web/Gallery/Himalayas/At%20the%20mouth%20of%20the%20cow.jpg",
-    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950",
+    "orientation": "horizontal"
   },
   {
     "id": "himalayas-camp-in-the-shadows-of-shivling",
@@ -449,7 +489,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Himalayas collection",
     "location": "Himalayas",
     "image": "/photos-web/Gallery/Himalayas/Camp%20in%20the%20shadows%20of%20Shivling.jpg",
-    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "himalayas-ganges-beginning",
@@ -460,7 +501,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Himalayas collection",
     "location": "Himalayas",
     "image": "/photos-web/Gallery/Himalayas/Ganges%20beginning.jpg",
-    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "himalayas-glacier-work",
@@ -471,7 +513,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Himalayas collection",
     "location": "Himalayas",
     "image": "/photos-web/Gallery/Himalayas/Glacier%20work.jpg",
-    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "himalayas-meru",
@@ -482,7 +525,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Himalayas collection",
     "location": "Himalayas",
     "image": "/photos-web/Gallery/Himalayas/Meru.jpg",
-    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950",
+    "orientation": "horizontal"
   },
   {
     "id": "himalayas-mountain-flowers-praying-to-the-shivling",
@@ -493,7 +537,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Himalayas collection",
     "location": "Himalayas",
     "image": "/photos-web/Gallery/Himalayas/Mountain%20flowers%20praying%20to%20the%20Shivling.jpg",
-    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "himalayas-peak-1",
@@ -504,7 +549,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Himalayas collection",
     "location": "Himalayas",
     "image": "/photos-web/Gallery/Himalayas/Peak%201.jpg",
-    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "himalayas-peak-2",
@@ -515,7 +561,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Himalayas collection",
     "location": "Himalayas",
     "image": "/photos-web/Gallery/Himalayas/Peak%202.jpg",
-    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "himalayas-shivling-lights",
@@ -526,7 +573,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Himalayas collection",
     "location": "Himalayas",
     "image": "/photos-web/Gallery/Himalayas/Shivling%20lights.jpg",
-    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "himalayas-tapvan-trek",
@@ -537,7 +585,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Himalayas collection",
     "location": "Himalayas",
     "image": "/photos-web/Gallery/Himalayas/Tapvan%20Trek.jpg",
-    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "himalayas-the-bhagirati-sisters",
@@ -548,7 +597,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Himalayas collection",
     "location": "Himalayas",
     "image": "/photos-web/Gallery/Himalayas/The%20Bhagirati%20sisters.jpg",
-    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-cyan-900 via-slate-800 to-indigo-950",
+    "orientation": "horizontal"
   },
   {
     "id": "hungary-baradla-1",
@@ -570,7 +620,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/After%20storm%20of%20the%20Como.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "italy-church-in-golden-shine",
@@ -581,7 +632,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/Church%20in%20golden%20shine.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "italy-edelweiss-meets-the-rare-lights",
@@ -592,7 +644,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/Edelweiss%20meets%20the%20rare%20lights.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "italy-gate-of-the-towers",
@@ -603,7 +656,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/Gate%20of%20the%20towers.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "italy-golden-brook",
@@ -614,7 +668,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/Golden%20brook.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "italy-spluga-pass-dream",
@@ -625,7 +680,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/Spluga%20pass%20dream.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "panorama"
   },
   {
     "id": "italy-sunset-over-the-lake-como",
@@ -636,7 +692,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/Sunset%20over%20the%20lake%20Como.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "italy-the-golden-shine-of-the-3-chimneys",
@@ -647,7 +704,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/The%20golden%20shine%20of%20the%203%20chimneys.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "italy-the-light-bringer",
@@ -658,7 +716,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/The%20light%20bringer.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "italy-tre-cime-distant-view",
@@ -669,7 +728,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/Tre%20Cime%20distant%20view.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "italy-vertical-drama",
@@ -680,7 +740,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/Vertical%20drama.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "italy-where-rain-and-earth-met",
@@ -691,7 +752,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/Where%20rain%20and%20earth%20met.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "italy-whispers-below-the-granite-sky",
@@ -702,7 +764,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Italy collection",
     "location": "Italy",
     "image": "/photos-web/Gallery/Italy/Whispers%20below%20the%20granite%20sky.jpg",
-    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-orange-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "la-palma-canaries-fiery-sunset-over-la-palma",
@@ -713,7 +776,8 @@ export const photoItems: PhotoItem[] = [
     "description": "La Palma - Canaries collection",
     "location": "La Palma - Canaries",
     "image": "/photos-web/Gallery/La%20Palma%20-%20Canaries/Fiery%20sunset%20over%20La%20Palma.jpg",
-    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "la-palma-canaries-golden-dusk-of-the-canaries",
@@ -724,7 +788,8 @@ export const photoItems: PhotoItem[] = [
     "description": "La Palma - Canaries collection",
     "location": "La Palma - Canaries",
     "image": "/photos-web/Gallery/La%20Palma%20-%20Canaries/Golden%20Dusk%20of%20the%20Canaries.jpg",
-    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "la-palma-canaries-lone-tree-of-the-volcano",
@@ -735,7 +800,8 @@ export const photoItems: PhotoItem[] = [
     "description": "La Palma - Canaries collection",
     "location": "La Palma - Canaries",
     "image": "/photos-web/Gallery/La%20Palma%20-%20Canaries/Lone%20tree%20of%20the%20volcano.jpg",
-    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "la-palma-canaries-salinas-de-fuencaliente",
@@ -746,7 +812,8 @@ export const photoItems: PhotoItem[] = [
     "description": "La Palma - Canaries collection",
     "location": "La Palma - Canaries",
     "image": "/photos-web/Gallery/La%20Palma%20-%20Canaries/Salinas%20de%20Fuencaliente.jpg",
-    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950",
+    "orientation": "panorama"
   },
   {
     "id": "la-palma-canaries-single-cliff-over-the-clouds",
@@ -757,7 +824,8 @@ export const photoItems: PhotoItem[] = [
     "description": "La Palma - Canaries collection",
     "location": "La Palma - Canaries",
     "image": "/photos-web/Gallery/La%20Palma%20-%20Canaries/Single%20cliff%20over%20the%20clouds.jpg",
-    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "la-palma-canaries-stormy-ocean-at-dawn",
@@ -768,7 +836,8 @@ export const photoItems: PhotoItem[] = [
     "description": "La Palma - Canaries collection",
     "location": "La Palma - Canaries",
     "image": "/photos-web/Gallery/La%20Palma%20-%20Canaries/Stormy%20ocean%20at%20dawn.jpg",
-    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "la-palma-canaries-tajogaite-in-golden-rain",
@@ -779,7 +848,8 @@ export const photoItems: PhotoItem[] = [
     "description": "La Palma - Canaries collection",
     "location": "La Palma - Canaries",
     "image": "/photos-web/Gallery/La%20Palma%20-%20Canaries/Tajogaite%20in%20golden%20rain.jpg",
-    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "la-palma-canaries-tajogaite-volcano-in-a-sunray-storm",
@@ -790,7 +860,8 @@ export const photoItems: PhotoItem[] = [
     "description": "La Palma - Canaries collection",
     "location": "La Palma - Canaries",
     "image": "/photos-web/Gallery/La%20Palma%20-%20Canaries/Tajogaite%20volcano%20in%20a%20sunray%20storm.jpg",
-    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "la-palma-canaries-tiny-leaves-in-a-huge-forest",
@@ -801,7 +872,8 @@ export const photoItems: PhotoItem[] = [
     "description": "La Palma - Canaries collection",
     "location": "La Palma - Canaries",
     "image": "/photos-web/Gallery/La%20Palma%20-%20Canaries/Tiny%20leaves%20in%20a%20huge%20forest.jpg",
-    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "la-palma-canaries-warm-light-in-a-rain-forest",
@@ -812,7 +884,8 @@ export const photoItems: PhotoItem[] = [
     "description": "La Palma - Canaries collection",
     "location": "La Palma - Canaries",
     "image": "/photos-web/Gallery/La%20Palma%20-%20Canaries/Warm%20light%20in%20a%20rain%20forest.jpg",
-    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-red-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "nightscape-a-starry-trail-to-a-spanish-house",
@@ -823,7 +896,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/A%20starry%20trail%20to%20a%20spanish%20house.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "nightscape-alter-berg-kapelle-in-heavens-light",
@@ -834,7 +908,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Alter%20Berg%20Kapelle%20in%20heavens%20light.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "horizontal"
   },
   {
     "id": "nightscape-angel-wings-of-the-chapel",
@@ -845,7 +920,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Angel%20wings%20of%20the%20chapel.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "panorama"
   },
   {
     "id": "nightscape-bifertenhuette-at-night",
@@ -856,7 +932,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Bifertenhuette%20at%20night.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "nightscape-borrowing-the-light",
@@ -867,7 +944,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Borrowing%20the%20light.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "panorama"
   },
   {
     "id": "nightscape-leonides-at-obersee",
@@ -878,7 +956,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Leonides%20at%20Obersee.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "nightscape-mily-way-over-sustenpass",
@@ -889,7 +968,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Mily-way%20over%20Sustenpass.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "horizontal"
   },
   {
     "id": "nightscape-polar-light-over-hohenzollern",
@@ -900,7 +980,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Polar%20light%20over%20Hohenzollern.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "panorama"
   },
   {
     "id": "nightscape-radiation",
@@ -911,7 +992,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Radiation.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "panorama"
   },
   {
     "id": "nightscape-river-cloud-meeting-the-burning-galaxy",
@@ -922,7 +1004,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/River%20cloud%20meeting%20the%20burning%20galaxy.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "nightscape-road-to-the-stars",
@@ -933,7 +1016,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/road%20to%20the%20stars.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "horizontal"
   },
   {
     "id": "nightscape-rottweiler-turm-super-moon",
@@ -944,7 +1028,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Rottweiler%20Turm%20super%20moon.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "nightscape-solar-eclipse-from-kistenstoeckli",
@@ -955,7 +1040,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Solar%20Eclipse%20from%20Kistenstoeckli.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "nightscape-star-trail-over-zillertal",
@@ -966,7 +1052,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Star%20trail%20over%20Zillertal.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "nightscape-stars-of-the-clariden",
@@ -977,7 +1064,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Stars%20of%20the%20Clariden.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "vertical"
   },
   {
     "id": "nightscape-the-citadel-of-night",
@@ -988,7 +1076,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/The%20citadel%20of%20night.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "horizontal"
   },
   {
     "id": "nightscape-the-guardian-of-the-stars",
@@ -999,7 +1088,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/The%20Guardian%20of%20the%20stars.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "horizontal"
   },
   {
     "id": "nightscape-wild-dreamland",
@@ -1010,7 +1100,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Nightscape collection",
     "location": "Nightscape",
     "image": "/photos-web/Gallery/Nightscape/Wild%20dreamland.jpg",
-    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950"
+    "accent": "bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950",
+    "orientation": "horizontal"
   },
   {
     "id": "norway-a-look-back-from-besseggen",
@@ -1021,7 +1112,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Norway collection",
     "location": "Norway",
     "image": "/photos-web/Gallery/Norway/A%20look%20back%20from%20Besseggen.jpg",
-    "accent": "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "norway-golden-fjords",
@@ -1032,7 +1124,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Norway collection",
     "location": "Norway",
     "image": "/photos-web/Gallery/Norway/Golden%20fjords.jpg",
-    "accent": "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "norway-layers-of-norway",
@@ -1043,7 +1136,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Norway collection",
     "location": "Norway",
     "image": "/photos-web/Gallery/Norway/Layers%20of%20Norway.jpg",
-    "accent": "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "norway-romsdalseggen-view",
@@ -1054,7 +1148,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Norway collection",
     "location": "Norway",
     "image": "/photos-web/Gallery/Norway/Romsdalseggen%20view.jpg",
-    "accent": "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-950",
+    "orientation": "panorama"
   },
   {
     "id": "norway-the-fjord-of-light",
@@ -1065,7 +1160,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Norway collection",
     "location": "Norway",
     "image": "/photos-web/Gallery/Norway/The%20fjord%20of%20light.jpg",
-    "accent": "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "norway-valley-of-lysebotn",
@@ -1076,7 +1172,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Norway collection",
     "location": "Norway",
     "image": "/photos-web/Gallery/Norway/Valley%20of%20Lysebotn.jpg",
-    "accent": "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-blue-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "scotland-harry-potter-backwards",
@@ -1087,7 +1184,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Scotland collection",
     "location": "Scotland",
     "image": "/photos-web/Gallery/Scotland/Harry%20Potter%20backwards.jpg",
-    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "scotland-just-the-two",
@@ -1098,7 +1196,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Scotland collection",
     "location": "Scotland",
     "image": "/photos-web/Gallery/Scotland/Just%20the%20two.jpg",
-    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950",
+    "orientation": "panorama"
   },
   {
     "id": "scotland-paintwork-scene-from-ben-nevis",
@@ -1109,7 +1208,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Scotland collection",
     "location": "Scotland",
     "image": "/photos-web/Gallery/Scotland/Paintwork%20scene%20from%20Ben%20Nevis.jpg",
-    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "scotland-slow-waves-clean-the-shores",
@@ -1120,7 +1220,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Scotland collection",
     "location": "Scotland",
     "image": "/photos-web/Gallery/Scotland/Slow%20waves%20clean%20the%20shores.jpg",
-    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "scotland-stones",
@@ -1131,7 +1232,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Scotland collection",
     "location": "Scotland",
     "image": "/photos-web/Gallery/Scotland/Stones.jpg",
-    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "scotland-strangers-on-the-stairs",
@@ -1142,7 +1244,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Scotland collection",
     "location": "Scotland",
     "image": "/photos-web/Gallery/Scotland/Strangers%20on%20the%20stairs.jpg",
-    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "scotland-the-beeauty-of-skye",
@@ -1153,7 +1256,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Scotland collection",
     "location": "Scotland",
     "image": "/photos-web/Gallery/Scotland/The%20beeauty%20of%20Skye.jpg",
-    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "scotland-the-old-times-looking-at-the-old-mountain",
@@ -1164,7 +1268,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Scotland collection",
     "location": "Scotland",
     "image": "/photos-web/Gallery/Scotland/The%20old%20times%20looking%20at%20the%20old%20mountain.jpg",
-    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-green-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "slowenia-bled-morning",
@@ -1175,7 +1280,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Slowenia collection",
     "location": "Slowenia",
     "image": "/photos-web/Gallery/Slowenia/Bled%20morning.jpg",
-    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "slowenia-cap-of-triglav",
@@ -1186,7 +1292,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Slowenia collection",
     "location": "Slowenia",
     "image": "/photos-web/Gallery/Slowenia/Cap%20of%20Triglav.jpg",
-    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "slowenia-edelweiss-in-early-summer-of-the-julian-alps",
@@ -1197,7 +1304,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Slowenia collection",
     "location": "Slowenia",
     "image": "/photos-web/Gallery/Slowenia/Edelweiss%20in%20early%20summer%20of%20the%20Julian%20Alps.jpg",
-    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "slowenia-fairy-tale",
@@ -1208,7 +1316,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Slowenia collection",
     "location": "Slowenia",
     "image": "/photos-web/Gallery/Slowenia/Fairy%20Tale.jpg",
-    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "slowenia-moss-campion-flowers-at-triglav",
@@ -1219,7 +1328,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Slowenia collection",
     "location": "Slowenia",
     "image": "/photos-web/Gallery/Slowenia/Moss%20campion%20flowers%20at%20Triglav.jpg",
-    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "slowenia-temple-of-the-mighty-peak",
@@ -1230,7 +1340,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Slowenia collection",
     "location": "Slowenia",
     "image": "/photos-web/Gallery/Slowenia/Temple%20of%20the%20mighty%20peak.jpg",
-    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "slowenia-tiny-small",
@@ -1241,7 +1352,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Slowenia collection",
     "location": "Slowenia",
     "image": "/photos-web/Gallery/Slowenia/Tiny%20small.jpg",
-    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-lime-900 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "swiss-alps-after-the-evening-storm",
@@ -1252,7 +1364,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/After%20the%20evening%20storm.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "panorama"
   },
   {
     "id": "swiss-alps-ascend-to-muttsee",
@@ -1263,7 +1376,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/Ascend%20to%20Muttsee.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "swiss-alps-berggasthaus-obbort",
@@ -1274,7 +1388,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/Berggasthaus%20Obbort.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "swiss-alps-burning-saddle",
@@ -1285,7 +1400,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/Burning%20saddle.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "swiss-alps-clearing-storm-at-linthal",
@@ -1296,7 +1412,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/Clearing%20storm%20at%20Linthal.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "swiss-alps-dawn-at-the-silvrettagletscher",
@@ -1307,7 +1424,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/Dawn%20at%20the%20Silvrettagletscher.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "swiss-alps-flora-in-early-june",
@@ -1318,7 +1436,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/Flora%20in%20early%20June.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "swiss-alps-golden-hour-from-the-kesch-glacier",
@@ -1329,7 +1448,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/Golden%20hour%20from%20the%20Kesch%20Glacier.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "swiss-alps-looking-at-the-italian-border",
@@ -1340,7 +1460,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/Looking%20at%20the%20Italian%20border.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "panorama"
   },
   {
     "id": "swiss-alps-the-breath-of-the-mountain",
@@ -1351,7 +1472,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/The%20breath%20of%20the%20mountain.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "swiss-alps-the-guardian-of-the-sunset",
@@ -1362,7 +1484,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/The%20guardian%20of%20the%20sunset.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "swiss-alps-the-needle-in-the-mist",
@@ -1373,7 +1496,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/The%20needle%20in%20the%20mist.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "swiss-alps-the-power-of-nature-at-its-beauty",
@@ -1384,7 +1508,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/The%20power%20of%20nature%20at%20its%20beauty.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "swiss-alps-tracks-in-the-snow",
@@ -1395,7 +1520,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/Tracks%20in%20the%20snow.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "swiss-alps-where-ether-meets-the-earth",
@@ -1406,7 +1532,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/Where%20Ether%20meets%20the%20Earth.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "swiss-alps-windgallen-view",
@@ -1417,7 +1544,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Swiss Alps collection",
     "location": "Swiss Alps",
     "image": "/photos-web/Gallery/Swiss%20Alps/Windgallen%20view.jpg",
-    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-sky-950 via-slate-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "wildlife-are-you-lost",
@@ -1428,7 +1556,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/Are%20you%20lost.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "wildlife-cold-outside",
@@ -1439,7 +1568,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/Cold%20outside.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "wildlife-craving",
@@ -1450,7 +1580,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/Craving.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "wildlife-deep-in-thoughts",
@@ -1461,7 +1592,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/Deep%20in%20thoughts.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "wildlife-just-a-small-kiss",
@@ -1472,7 +1604,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/Just%20a%20small%20kiss.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "wildlife-just-married",
@@ -1483,7 +1616,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/Just%20married.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "wildlife-kormoran",
@@ -1494,7 +1628,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/Kormoran.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "wildlife-look-at-me",
@@ -1505,7 +1640,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/Look%20at%20me.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "wildlife-lying-in-the-sound-of-silence",
@@ -1516,7 +1652,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/Lying%20in%20the%20sound%20of%20silence.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "wildlife-motherly-warmth",
@@ -1527,7 +1664,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/Motherly%20warmth.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "wildlife-reach-the-purple",
@@ -1538,7 +1676,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/Reach%20the%20purple.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "wildlife-the-future-mother",
@@ -1549,7 +1688,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/The%20future%20mother.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   },
   {
     "id": "wildlife-the-guardian-in-pink",
@@ -1560,7 +1700,8 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/The%20guardian%20in%20pink.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "vertical"
   },
   {
     "id": "wildlife-the-return-of-the-king",
@@ -1571,6 +1712,7 @@ export const photoItems: PhotoItem[] = [
     "description": "Wildlife collection",
     "location": "Wildlife",
     "image": "/photos-web/Gallery/Wildlife/The%20return%20of%20the%20king.jpg",
-    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950"
+    "accent": "bg-gradient-to-br from-amber-950 via-stone-800 to-slate-950",
+    "orientation": "horizontal"
   }
 ];

@@ -84,12 +84,15 @@ function readFavoriteNames() {
 // (horizontal/vertical/panorama) — both layouts are scanned. Each file name (minus extension)
 // is the photo title, and photos-web mirrors them flat, so the generated URL never includes
 // the orientation segment.
+const ORIENTATION_SUBDIRS = new Set(["horizontal", "vertical", "panorama"]);
+
 function listCategoryImageFiles(categoryPath) {
-  const direct = listImageFiles(categoryPath).map((file) => ({ file, dir: categoryPath }));
+  const direct = listImageFiles(categoryPath).map((file) => ({ file, dir: categoryPath, orientation: undefined }));
   const subdirs = listDirs(categoryPath);
   const nested = subdirs.flatMap((subdir) => {
     const subdirPath = path.join(categoryPath, subdir);
-    return listImageFiles(subdirPath).map((file) => ({ file, dir: subdirPath }));
+    const orientation = ORIENTATION_SUBDIRS.has(subdir.toLowerCase()) ? subdir.toLowerCase() : undefined;
+    return listImageFiles(subdirPath).map((file) => ({ file, dir: subdirPath, orientation }));
   });
   return [...direct, ...nested].sort((a, b) =>
     a.file.localeCompare(b.file, undefined, { numeric: true }),
@@ -105,7 +108,7 @@ function generateGalleryData() {
     const category = slugify(folder);
     const files = listCategoryImageFiles(path.join(galleryDir, folder));
 
-    return files.map(({ file }) => {
+    return files.map(({ file, orientation }) => {
       const title = path.basename(file, path.extname(file));
       return {
         id: `${category}-${slugify(title)}`,
@@ -117,6 +120,7 @@ function generateGalleryData() {
         location: categoryLabel,
         image: toPublicPath(webPhotosSegment, "Gallery", folder, file),
         accent: ACCENTS[category] || DEFAULT_ACCENT,
+        ...(orientation ? { orientation } : {}),
       };
     });
   });
@@ -132,6 +136,7 @@ function generateGalleryData() {
     `  location: string;\n` +
     `  image: string;\n` +
     `  accent: string;\n` +
+    `  orientation?: "horizontal" | "vertical" | "panorama";\n` +
     `};\n\n` +
     `export const photoItems: PhotoItem[] = ${JSON.stringify(photoItems, null, 2)};\n`;
 
