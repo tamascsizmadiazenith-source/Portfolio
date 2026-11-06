@@ -25,6 +25,7 @@ These parameters were set from the Checkout Studio field intents in
 | name_collection | `{ individual: { enabled: true, optional: true } }` |
 | integration_identifier | hosted_mobile_app_0001 |
 | origin_context | mobile_app |
+| shipping_address_collection | ~200 allowed countries (see `SHIPPING_ALLOWED_COUNTRIES` in `src/services/stripe.ts`) |
 
 **Not applied:** `payment_method_collection` was specified as `"always"`, but per the
 integration rules it only applies when `mode` is `"subscription"`. This site's checkout
