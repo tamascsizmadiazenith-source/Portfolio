@@ -232,33 +232,33 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
   }, [isDragging]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 px-4 py-8 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 px-2 py-6 backdrop-blur-sm sm:px-4 sm:py-8">
       <button
         type="button"
         onClick={onClose}
-        className="fixed right-4 top-4 z-[51] rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm text-white backdrop-blur-sm transition hover:bg-white/10"
+        className="fixed right-3 top-3 z-[51] rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm text-white backdrop-blur-sm transition hover:bg-white/10 sm:right-4 sm:top-4"
       >
         {t("acquisition.close")}
       </button>
 
-      <div className="relative mx-auto max-h-[90vh] w-full max-w-[72rem] overflow-y-auto overscroll-contain rounded-[32px] border border-white/10 bg-[#11131A] shadow-[0_40px_120px_rgba(0,0,0,0.8)]">
-        <div className="grid gap-6 p-8 lg:grid-cols-[1.2fr_0.95fr]">
-          <div className="space-y-6">
+      <div className="relative mx-auto max-h-[90vh] w-full max-w-[72rem] overflow-y-auto overscroll-contain rounded-[20px] border border-white/10 bg-[#11131A] shadow-[0_40px_120px_rgba(0,0,0,0.8)] sm:rounded-[32px]">
+        <div className="grid gap-4 p-4 sm:gap-6 sm:p-8 lg:grid-cols-[1.2fr_0.95fr]">
+          <div className="space-y-4 sm:space-y-6">
             <div>
               <p className="text-xs uppercase tracking-[0.35em] text-white/50">{t("acquisition.eyebrow")}</p>
-              <h3 className="mt-3 text-3xl font-semibold text-white">{photo.title}</h3>
-              <p className="mt-4 text-sm leading-7 text-white/70">{t("acquisition.subtitle")}</p>
+              <h3 className="mt-2 text-xl font-semibold text-white sm:mt-3 sm:text-3xl">{photo.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-white/70 sm:mt-4 sm:leading-7">{t("acquisition.subtitle")}</p>
             </div>
 
-            <div className="space-y-4 rounded-[24px] border border-white/10 bg-[#0A0C10] p-6">
+            <div className="space-y-3 rounded-[18px] border border-white/10 bg-[#0A0C10] p-4 sm:space-y-4 sm:rounded-[24px] sm:p-6">
               <div className="text-xs uppercase tracking-[0.35em] text-white/50">{t("acquisition.material")}</div>
-              <div className="grid gap-3 sm:grid-cols-2 sm:max-w-[36rem]">
+              <div className="grid gap-2 sm:grid-cols-2 sm:max-w-[36rem] sm:gap-3">
                 {mediaOptions.map((option) => (
                   <button
                     key={option}
                     type="button"
                     onClick={() => setMedia(option)}
-                    className={`flex w-full min-w-0 items-center justify-center rounded-2xl border px-4 py-3 text-sm transition overflow-hidden whitespace-normal ${
+                    className={`flex w-full min-w-0 items-center justify-center rounded-2xl border px-4 py-2.5 text-sm transition overflow-hidden whitespace-normal sm:py-3 ${
                       media === option
                         ? "border-[#D4AF37] bg-[#D4AF37]/10 text-[#D4AF37]"
                         : "border-white/10 bg-white/5 text-white/80"
@@ -270,15 +270,15 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
               </div>
             </div>
 
-            <div className="space-y-4 rounded-[24px] border border-white/10 bg-[#0A0C10] p-6">
+            <div className="space-y-3 rounded-[18px] border border-white/10 bg-[#0A0C10] p-4 sm:space-y-4 sm:rounded-[24px] sm:p-6">
               <div className="text-xs uppercase tracking-[0.35em] text-white/50">{t("acquisition.size")}</div>
-              <div className="grid gap-3 sm:max-w-[36rem]">
+              <div className="grid gap-2 sm:max-w-[36rem] sm:gap-3">
                 {sizeOptions.map((option) => (
                   <button
                     key={option.label}
                     type="button"
                     onClick={() => setSize(option.label)}
-                    className={`flex w-full min-w-0 items-center rounded-2xl border px-4 py-3 text-left text-sm transition overflow-hidden whitespace-normal ${
+                    className={`flex w-full min-w-0 items-center rounded-2xl border px-4 py-2.5 text-left text-sm transition overflow-hidden whitespace-normal sm:py-3 ${
                       size === option.label
                         ? "border-[#D4AF37] bg-[#D4AF37]/10 text-[#D4AF37]"
                         : "border-white/10 bg-white/5 text-white/80"
@@ -297,18 +297,18 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
               </button>
             </div>
 
-            <div className="rounded-[24px] border border-white/10 bg-[#0A0C10] p-6">
+            <div className="rounded-[18px] border border-white/10 bg-[#0A0C10] p-4 sm:rounded-[24px] sm:p-6">
               <div className="text-xs uppercase tracking-[0.35em] text-white/50">{t("acquisition.orderSummary")}</div>
-              <div className="mt-4 space-y-3 text-sm text-white/70">
-                <div className="flex justify-between border-b border-white/10 pb-3">
+              <div className="mt-3 space-y-2.5 text-sm text-white/70 sm:mt-4 sm:space-y-3">
+                <div className="flex justify-between border-b border-white/10 pb-2.5 sm:pb-3">
                   <span>{t("acquisition.material")}</span>
                   <span>{t(`acquisition.materials.${media}`)}</span>
                 </div>
-                <div className="flex justify-between border-b border-white/10 pb-3">
+                <div className="flex justify-between border-b border-white/10 pb-2.5 sm:pb-3">
                   <span>{t("acquisition.size")}</span>
                   <span>{size}</span>
                 </div>
-                <div className="flex justify-between pt-3 text-base font-semibold text-white">
+                <div className="flex justify-between pt-2.5 text-base font-semibold text-white sm:pt-3">
                   <span>{t("acquisition.total")}</span>
                     <span>€{price}</span>
                 </div>
@@ -316,10 +316,10 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
             </div>
           </div>
 
-          <div className="rounded-[32px] border border-white/10 bg-[#0F1218] p-8">
-            <div className="mb-6 text-xs uppercase tracking-[0.35em] text-white/50">{t("acquisition.preview")}</div>
-            <div className="rounded-[28px] border border-white/10 bg-white/5 p-6">
-              <div className="mx-auto max-w-[420px] rounded-[24px] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 p-1">
+          <div className="rounded-[20px] border border-white/10 bg-[#0F1218] p-4 sm:rounded-[32px] sm:p-8">
+            <div className="mb-4 text-xs uppercase tracking-[0.35em] text-white/50 sm:mb-6">{t("acquisition.preview")}</div>
+            <div className="rounded-[18px] border border-white/10 bg-white/5 p-3 sm:rounded-[28px] sm:p-6">
+              <div className="mx-auto w-full max-w-[420px] rounded-[24px] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 p-1">
                 <div
                   ref={dragRef}
                   onPointerDown={(e) => {
@@ -328,11 +328,10 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
                       setIsDragging(true);
                     }
                   }}
-                  className="relative overflow-hidden rounded-[23px] bg-[#0b0c0f]"
+                  className="relative mx-auto w-full overflow-hidden rounded-[23px] bg-[#0b0c0f]"
                   style={{
                     aspectRatio: `${previewFrame.ratio}`,
-                    width: previewFrame.width,
-                    height: previewFrame.height,
+                    maxWidth: previewFrame.width,
                   }}
                 >
                   {photo.image ? (
@@ -354,7 +353,7 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
                 </div>
               </div>
             </div>
-            <div className="mt-4 flex items-center gap-2">
+            <div className="mt-4 flex flex-wrap items-center gap-2">
               <button
                 type="button"
                 onClick={() => setFitMode(fitMode === "cover" ? "contain" : "cover")}
@@ -387,7 +386,7 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
             <button
               type="button"
               onClick={handleAcquire}
-              className="mt-8 flex w-full items-center justify-center rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#0A0C10] transition hover:bg-[#c5992f]"
+              className="mt-6 flex w-full items-center justify-center rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#0A0C10] transition hover:bg-[#c5992f] sm:mt-8"
             >
               {t("acquisition.addToCart")} — €{price}
             </button>
@@ -396,20 +395,20 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
       </div>
 
       {showSizeGuide && sizeGuideImages.length > 0 && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 px-4 py-8 backdrop-blur-sm">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 px-2 py-6 backdrop-blur-sm sm:px-4 sm:py-8">
           <button
             type="button"
             onClick={() => setShowSizeGuide(false)}
-            className="fixed right-4 top-4 z-[61] rounded-full bg-white/10 px-3 py-2 text-sm text-white backdrop-blur-sm hover:bg-white/15"
+            className="fixed right-3 top-3 z-[61] rounded-full bg-white/10 px-3 py-2 text-sm text-white backdrop-blur-sm hover:bg-white/15 sm:right-4 sm:top-4"
           >
             ✕
           </button>
 
-          <div className="relative mx-auto max-h-[90vh] w-full max-w-2xl overflow-y-auto overscroll-contain rounded-[24px] border border-white/10 bg-[#11131A] p-8">
-            <h3 className="text-2xl font-semibold text-white">{t("acquisition.sizeGuideTitle")}</h3>
+          <div className="relative mx-auto max-h-[90vh] w-full max-w-2xl overflow-y-auto overscroll-contain rounded-[20px] border border-white/10 bg-[#11131A] p-4 sm:rounded-[24px] sm:p-8">
+            <h3 className="text-xl font-semibold text-white sm:text-2xl">{t("acquisition.sizeGuideTitle")}</h3>
             <p className="mt-2 text-sm text-white/70">{t("acquisition.sizeGuideDescription")}</p>
 
-            <div className="mt-6 overflow-hidden rounded-[16px] bg-white/5">
+            <div className="mt-4 overflow-hidden rounded-[16px] bg-white/5 sm:mt-6">
               <Image
                 src={sizeGuideImages[sizeGuideIndex].image}
                 alt={`Size example ${sizeGuideIndex + 1}`}
