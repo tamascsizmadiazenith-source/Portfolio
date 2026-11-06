@@ -233,15 +233,15 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 px-4 py-8 backdrop-blur-sm">
-      <div className="relative mx-auto w-full max-w-[72rem] overflow-hidden rounded-[32px] border border-white/10 bg-[#11131A] shadow-[0_40px_120px_rgba(0,0,0,0.8)]">
-        <button
-          type="button"
-          onClick={onClose}
-          className="absolute right-4 top-4 rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm text-white transition hover:bg-white/10"
-        >
-          {t("acquisition.close")}
-        </button>
+      <button
+        type="button"
+        onClick={onClose}
+        className="fixed right-4 top-4 z-[51] rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm text-white backdrop-blur-sm transition hover:bg-white/10"
+      >
+        {t("acquisition.close")}
+      </button>
 
+      <div className="relative mx-auto max-h-[90vh] w-full max-w-[72rem] overflow-y-auto overscroll-contain rounded-[32px] border border-white/10 bg-[#11131A] shadow-[0_40px_120px_rgba(0,0,0,0.8)]">
         <div className="grid gap-6 p-8 lg:grid-cols-[1.2fr_0.95fr]">
           <div className="space-y-6">
             <div>
@@ -397,15 +397,15 @@ export default function AcquisitionOverlay({ photo, onClose }: AcquisitionOverla
 
       {showSizeGuide && sizeGuideImages.length > 0 && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/95 px-4 py-8 backdrop-blur-sm">
-          <div className="relative mx-auto w-full max-w-2xl rounded-[24px] border border-white/10 bg-[#11131A] p-8">
-            <button
-              type="button"
-              onClick={() => setShowSizeGuide(false)}
-              className="absolute right-4 top-4 rounded-full bg-white/10 px-3 py-2 text-sm text-white hover:bg-white/15"
-            >
-              ✕
-            </button>
+          <button
+            type="button"
+            onClick={() => setShowSizeGuide(false)}
+            className="fixed right-4 top-4 z-[61] rounded-full bg-white/10 px-3 py-2 text-sm text-white backdrop-blur-sm hover:bg-white/15"
+          >
+            ✕
+          </button>
 
+          <div className="relative mx-auto max-h-[90vh] w-full max-w-2xl overflow-y-auto overscroll-contain rounded-[24px] border border-white/10 bg-[#11131A] p-8">
             <h3 className="text-2xl font-semibold text-white">{t("acquisition.sizeGuideTitle")}</h3>
             <p className="mt-2 text-sm text-white/70">{t("acquisition.sizeGuideDescription")}</p>
 
