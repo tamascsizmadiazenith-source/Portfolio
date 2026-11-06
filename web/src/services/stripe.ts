@@ -46,6 +46,15 @@ export async function createCheckout(items: CheckoutItem[], origin?: string) {
     mode: "payment",
     success_url: `${baseUrl}/?checkout=success`,
     cancel_url: `${baseUrl}/?checkout=cancel`,
+    ui_mode: "hosted_page",
+    billing_address_collection: "auto",
+    phone_number_collection: { enabled: false },
+    automatic_tax: { enabled: false },
+    allow_promotion_codes: true,
+    submit_type: "auto",
+    name_collection: { individual: { enabled: true, optional: true } },
+    integration_identifier: "hosted_mobile_app_0001",
+    origin_context: "mobile_app",
     line_items: items.map((item) => ({
       quantity: item.quantity,
       price_data: {
