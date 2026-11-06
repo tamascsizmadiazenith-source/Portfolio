@@ -32,8 +32,6 @@ const paperLandscapeOptions: SizeOption[] = [
   { label: "75 x 50 cm", price: 280 },
   { label: "80 x 60 cm", price: 350 },
   { label: "90 x 60 cm", price: 420 },
-  { label: "100 x 75 cm", price: 480 },
-  { label: "100 x 80 cm", price: 490 },
 ];
 const canvasLandscapeOptions: SizeOption[] = [
   { label: "50 x 40 cm", price: 180 },
@@ -42,8 +40,6 @@ const canvasLandscapeOptions: SizeOption[] = [
   { label: "75 x 50 cm", price: 260 },
   { label: "80 x 60 cm", price: 300 },
   { label: "90 x 60 cm", price: 350 },
-  { label: "100 x 75 cm", price: 400 },
-  { label: "100 x 80 cm", price: 420 },
 ];
 
 function rotateSizeLabel(option: string) {
